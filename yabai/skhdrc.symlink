@@ -1,0 +1,76 @@
+#SKHD STUFF
+
+# if you're having troubles finding key codes for a key just type skhd --observe in a terminal and type a key. Pretty cool! Or just check the wiki.
+
+## HYPER == SHIFT + CMD + ALT + OPTION
+
+## Quickly restart the yabai launch agent
+ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+
+## Close active application
+hyper - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
+
+# test a command
+# lshift - x : terminal-notifier -message "lshift - x"
+#lshift - x : terminal-notifier -message "$(yabai -m query --windows --window | jq -re ".id")"
+
+## open terminal
+hyper - return : /Applications/iTerm.app/Contents/MacOS/iTerm2
+
+## swap window
+hyper - 0x21 : yabai -m window --swap west # 0x21 is the "[" key
+hyper - 0x1E : yabai -m window --swap east # 0x1E is the "]" key
+
+## increase window size
+#shift + alt - a : yabai -m window --resize left:-20:0
+#shift + alt - s : yabai -m window --resize bottom:0:20
+#shift + alt - w : yabai -m window --resize top:0:-20
+#shift + alt - d : yabai -m window --resize right:20:0
+
+## decrease window size
+#shift + cmd - a : yabai -m window --resize left:20:0
+#shift + cmd - s : yabai -m window --resize bottom:0:-20
+#shift + cmd - w : yabai -m window --resize top:0:20
+#shift + cmd - d : yabai -m window --resize right:-20:0
+
+
+# create and destory spaces
+hyper - n : yabai -m space --create
+hyper - w : yabai -m space --destroy
+
+
+## rotate tree 90
+hyper - r : yabai -m space --rotate 90
+
+## flip the tree vertically
+hyper - 4 : yabai -m space --mirror y-axis
+# mirror tree y-axis
+#alt - y : yabai -m space --mirror y-axis
+## mirror tree x-axis
+#alt - x : yabai -m space --mirror x-axis
+
+#Move active window to next space on current display
+shift + lalt + lcmd + ctrl + ralt - 1 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '1' ]]; then yabai -m window --space 2; elif [[ '{}' = '2' ]]; then yabai -m window --space 1; fi"
+shift + lalt + lcmd + ctrl + ralt - 2 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '3' ]]; then yabai -m window --space 4; elif [[ '{}' = '4' ]]; then yabai -m window --space 3; fi"
+shift + lalt + lcmd + ctrl + ralt - 3 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '5' ]]; then yabai -m window --space 6; elif [[ '{}' = '6' ]]; then yabai -m window --space 5; fi"
+
+## toggle window fullscreen zoom
+hyper - f : yabai -m window --toggle zoom-fullscreen
+
+# cycle through windows
+# cycle backwards
+#hyper - i : yabai -m query --spaces | jq -re ".[] | select(.visible == 1).index" | xargs -I{} yabai -m query --windows --space {} | jq -sre "add | sort_by(.display, .frame.x, .frame.y, .id) | nth(index(map(select(.focused == 1))) - 1).id" | xargs -I{} yabai -m window --focus {}
+#hyper - i : yabai -m query --spaces | jq -re ".[] | select(.visible == 1).index" | xargs -I{} yabai -m query --windows --space {} | jq -sre "add | sort_by(.display, .frame.x, .frame.y, .id) | nth(index(map(select(.focused == 1))) - 1).id" | xargs -I{} yabai -m window --focus {}
+
+#alt - p : yabai -m window --focus stack.prev || yabai -m window --focus prev || yabai -m window --focus last
+#
+# go to each window WITHOUT going into a stack
+# ctrl + alt + cmd + lshift - i : yabai -m query --spaces | jq -re ".[] | select(.visible == 1).index" | xargs -I{} yabai -m query --windows --space {} | jq -re "[.[] | select((.\"stack-index\" <= 1) and (.app != \"Hammerspoon\"))]" | jq -sre "add | sort_by(.display, .frame.x, .frame.y, .id) | nth(index(map(select(.focused == 1))) - 1).id" | xargs -I{} yabai -m window --focus {}
+ctrl + alt + cmd + lshift - i : yabai -m query --spaces | jq -re ".[] | select(.visible == 1).index" | xargs -I{} yabai -m query --windows --space {} | jq -re "[.[] | select(.app != \"Hammerspoon\")]" | jq -sre "add | sort_by(.display, .frame.x, .frame.y, .id) | nth(index(map(select(.focused == 1))) - 1).id" | xargs -I{} yabai -m window --focus {}
+
+# ctrl + alt + cmd + rshift - i : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
+
+#hyper - 0x29 : yabai -m query --spaces \
+#hyper - o : yabai -m query --spaces | jq -re ".[] | select(.visible == 1).index" | xargs -I{} yabai -m query --windows --space {} | jq -sre "add | sort_by(.display, .frame.x, .frame.y, .id) | reverse | nth(index(map(select(.focused == 1))) - 1).id" | xargs -I{} yabai -m window --focus {}
+
+#alt - n : yabai -m window --focus stack.next || yabai -m window --focus next || yabai -m window --focus first
