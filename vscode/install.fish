@@ -23,7 +23,8 @@ switch (uname -a)
         and ln -sf "$DOTFILES/vscode/settings.json" "$vscode_home/User/settings.json"
 end
 
+set -l extensions (code --list-extensions)
 cat $DOTFILES/vscode/extensions.txt | while read module
-    code --list-extensions | grep -qw "$module"
-    or code --install-extension "$module"
+	echo $extensions | grep -qw "$module"
+		or code --install-extension "$module"
 end
