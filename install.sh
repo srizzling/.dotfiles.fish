@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 IFS=$'\n\t'
 
 info() {
@@ -33,20 +33,25 @@ fi
 # but for now I only use macos - so if anything else is used we will just kill
 # it
 if [ "$IS_MAC" = false ]; then
-	fail "OS is not MacOS, skipping bootstrapping"
+ 	sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+	sudo apt-get install -y fish git grc fzf
 fi
 
-# brew needs to be installed and configured before anything else
-if ! [ -f "/usr/local/bin/brew" ]; then
-	info "Installing homebrew"
-	brew_script_location=$(mktemp)
-	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install --output "$brew_script_location"
-	/usr/bin/ruby "$brew_script_location"
+# if is mac
+if [ "$IS_MAC" = true ]; then
+	# brew needs to be installed and configured before anything else
+	if ! [ -f "/usr/local/bin/brew" ]; then
+		info "Installing homebrew"
+		brew_script_location=$(mktemp)
+		curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install --output "$brew_script_location"
+		/usr/bin/ruby "$brew_script_location"
+	fi
+
+	# these pkgs are required for the bootstrap - after this we can run
+	# most other pkgs are managed by brew/Brewfile
+	brew install fish git starship
 fi
 
-# these pkgs are required for the bootstrap - after this we can run
-# most other pkgs are managed by brew/Brewfile
-brew install fish git
 
 # run bootstrap - from now on the only shell we run is fish
 ./bootstrap.fish
