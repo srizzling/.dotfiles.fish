@@ -1,133 +1,124 @@
 {
-  "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll": true,
-      "source.organizeImports": false
-    },
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "breadcrumbs.enabled": true,
-  "cSpell.enableFiletypes": [
-    "!plaintext"
-  ],
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.organizeImports": true
-  },
-  "editor.fontFamily": "'Monoid Mono', 'Inconsolata', Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontLigatures": true,
-  "editor.formatOnSave": true,
-  "editor.formatOnType": true,
-  "editor.hideCursorInOverviewRuler": true,
-  "editor.lineHeight": 24,
-  "editor.minimap.enabled": false,
-  "editor.overviewRulerBorder": false,
-  "editor.rulers": [
-    120,
-    80
-  ],
-  "editor.scrollbar.horizontal": "hidden",
-  "editor.scrollbar.vertical": "hidden",
-  "editor.smoothScrolling": true,
-  "editor.suggestSelection": "first",
-  "editor.trimAutoWhitespace": true,
-  "editor.wordWrap": "on",
-  "explorer.decorations.badges": false,
-  "files.exclude": {
-    "**/.classpath": true,
-    "**/.factorypath": true,
-    "**/.project": true,
-    "**/.settings": true
-  },
-  "files.trimTrailingWhitespace": true,
-  "gauge.recommendedSettings.options": "Apply & Reload",
-  "go.coverOnSingleTest": true,
-  "go.lintFlags": [
-    "--fast"
-  ],
-  "go.lintTool": "golangci-lint",
-  "go.toolsManagement.autoUpdate": true,
-  "go.useLanguageServer": true,
-  "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
-  "materialTheme.accent": "Yellow",
-  "shellcheck.disableVersionCheck": true,
-  "terminal.external.osxExec": "iTerm.app",
-  "terminal.integrated.fontFamily": "'Inconsolata Nerd Font Mono'",
-  "terminal.integrated.rendererType": "dom",
-  "terminal.integrated.shell.osx": "/usr/local/bin/fish",
-  "window.zoomLevel": 1,
-  "workbench.activityBar.visible": false,
-  "workbench.colorCustomizations": {
-    "activityBar.activeBorder": "#FFA000",
-    "activityBarBadge.background": "#FFA000",
-    "breadcrumb.activeSelectionForeground": "#FFA000",
-    "editor.findMatchBorder": "#FFA000",
-    "editorSuggestWidget.highlightForeground": "#FFA000",
-    "editorWidget.border": "#FFA000",
-    "editorWidget.resizeBorder": "#FFA000",
-    "list.activeSelectionForeground": "#FFA000",
-    "list.highlightForeground": "#FFA000",
-    "list.inactiveSelectionForeground": "#FFA000",
-    "menu.selectionForeground": "#FFA000",
-    "menubar.selectionForeground": "#FFA000",
-    "notificationLink.foreground": "#FFA000",
-    "panelTitle.activeBorder": "#FFA000",
-    "pickerGroup.foreground": "#FFA000",
-    "progressBar.background": "#FFA000",
-    "scrollbarSlider.activeBackground": "#FFA00050",
-    "selection.background": "#FFA00040",
-    "settings.headerForeground": "#FFA000",
-    "settings.modifiedItemIndicator": "#FFA000",
-    "tab.activeBorder": "#FFA000",
-    "textLink.foreground": "#FFA000"
-  },
-  "workbench.colorTheme": "Material Theme",
-  "workbench.editorAssociations": [
-    {
-      "filenamePattern": "*.ipynb",
-      "viewType": "jupyter.notebook.ipynb"
-    }
-  ],
-  "workbench.settings.editor": "json",
-  "workbench.startupEditor": "newUntitledFile",
-  "workbench.statusBar.visible": true,
-  "yaml.customTags": [
-    "!And sequence",
-    "!And",
-    "!Base64",
-    "!Cidr",
-    "!Equals sequence",
-    "!Equals",
-    "!FindInMap sequence",
-    "!FindInMap",
-    "!GetAZs",
-    "!GetAtt",
-    "!If sequence",
-    "!If",
-    "!ImportValue sequence",
-    "!ImportValue",
-    "!Join sequence",
-    "!Join",
-    "!Not sequence",
-    "!Not",
-    "!Or sequence",
-    "!Or",
-    "!Ref",
-    "!Select sequence",
-    "!Select",
-    "!Split sequence",
-    "!Split",
-    "!Sub sequence",
-    "!Sub"
-  ],
-  "yaml.validate": false
-}
+	"[dockerfile]": {
+	  "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+	},
+	"[json]": {
+	  "editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"[markdown]": {
+	  "editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescript]": {
+	  "editor.codeActionsOnSave": {
+		"source.fixAll": true,
+		"source.organizeImports": false
+	  },
+	  "editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"breadcrumbs.enabled": true,
+	"cSpell.enableFiletypes": ["!plaintext"],
+	"editor.codeActionsOnSave": {
+	  "source.fixAll": true,
+	  "source.organizeImports": true
+	},
+	"editor.fontFamily": "'Iosevka', 'Iosevka Nerd Font Complete Mono'",
+	"editor.formatOnSave": true,
+	"editor.formatOnType": true,
+	"editor.hideCursorInOverviewRuler": true,
+	"editor.fontWeight": "400",
+	"editor.fontSize": 11,
+	"editor.lineHeight": 25,
+	"editor.minimap.enabled": false,
+	"editor.overviewRulerBorder": false,
+	"editor.rulers": [120, 80],
+	"editor.scrollbar.horizontal": "hidden",
+	"editor.scrollbar.vertical": "hidden",
+	"editor.smoothScrolling": true,
+	"editor.suggestSelection": "first",
+	"editor.trimAutoWhitespace": true,
+	"editor.wordWrap": "on",
+	"explorer.decorations.badges": false,
+	"files.exclude": {
+	  "**/.classpath": true,
+	  "**/.factorypath": true,
+	  "**/.project": true,
+	  "**/.settings": true
+	},
+	"files.trimTrailingWhitespace": true,
+	"gauge.recommendedSettings.options": "Apply & Reload",
+	"go.coverOnSingleTest": true,
+	"go.lintFlags": ["--fast"],
+	"go.lintTool": "golangci-lint",
+	"go.toolsManagement.autoUpdate": true,
+	"go.useLanguageServer": true,
+	"javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+	"materialTheme.accent": "Yellow",
+	"shellcheck.disableVersionCheck": true,
+	"terminal.external.osxExec": "iTerm.app",
+	"terminal.integrated.fontFamily": "'Inconsolata Nerd Font Mono'",
+	"terminal.integrated.rendererType": "dom",
+	"terminal.integrated.shell.osx": "/usr/local/bin/fish",
+	"window.zoomLevel": 1,
+	"workbench.activityBar.visible": false,
+	"workbench.colorCustomizations": {
+	  "activityBar.activeBorder": "#FFA000",
+	  "activityBarBadge.background": "#FFA000",
+	  "breadcrumb.activeSelectionForeground": "#FFA000",
+	  "editor.findMatchBorder": "#FFA000",
+	  "editorSuggestWidget.highlightForeground": "#FFA000",
+	  "editorWidget.border": "#FFA000",
+	  "editorWidget.resizeBorder": "#FFA000",
+	  "list.activeSelectionForeground": "#FFA000",
+	  "list.highlightForeground": "#FFA000",
+	  "list.inactiveSelectionForeground": "#FFA000",
+	  "menu.selectionForeground": "#FFA000",
+	  "menubar.selectionForeground": "#FFA000",
+	  "notificationLink.foreground": "#FFA000",
+	  "panelTitle.activeBorder": "#FFA000",
+	  "pickerGroup.foreground": "#FFA000",
+	  "progressBar.background": "#FFA000",
+	  "scrollbarSlider.activeBackground": "#FFA00050",
+	  "selection.background": "#FFA00040",
+	  "settings.headerForeground": "#FFA000",
+	  "settings.modifiedItemIndicator": "#FFA000",
+	  "tab.activeBorder": "#FFA000",
+	  "textLink.foreground": "#FFA000"
+	},
+	"workbench.colorTheme": "Material Theme",
+	"workbench.editorAssociations": {
+	  "*.ipynb": "jupyter.notebook.ipynb"
+	},
+	"workbench.settings.editor": "json",
+	"workbench.startupEditor": "newUntitledFile",
+	"workbench.statusBar.visible": true,
+	"yaml.customTags": [
+	  "!And sequence",
+	  "!And",
+	  "!Base64",
+	  "!Cidr",
+	  "!Equals sequence",
+	  "!Equals",
+	  "!FindInMap sequence",
+	  "!FindInMap",
+	  "!GetAZs",
+	  "!GetAtt",
+	  "!If sequence",
+	  "!If",
+	  "!ImportValue sequence",
+	  "!ImportValue",
+	  "!Join sequence",
+	  "!Join",
+	  "!Not sequence",
+	  "!Not",
+	  "!Or sequence",
+	  "!Or",
+	  "!Ref",
+	  "!Select sequence",
+	  "!Select",
+	  "!Split sequence",
+	  "!Split",
+	  "!Sub sequence",
+	  "!Sub"
+	],
+	"yaml.validate": false
+  }

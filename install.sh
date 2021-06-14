@@ -29,11 +29,9 @@ else
 	IS_MAC=false
 fi
 
-# at some point, I'll convert these for a linux based distros..
-# but for now I only use macos - so if anything else is used we will just kill
-# it
 if [ "$IS_MAC" = false ]; then
- 	sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+	# install starship
+	sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 	sudo apt-get install -y fish git grc fzf
 fi
 
@@ -51,7 +49,6 @@ if [ "$IS_MAC" = true ]; then
 	# most other pkgs are managed by brew/Brewfile
 	brew install fish git starship
 fi
-
 
 # run bootstrap - from now on the only shell we run is fish
 ./bootstrap.fish
