@@ -29,13 +29,13 @@ else
 	IS_MAC=false
 fi
 
-# at some point, I'll convert these for a linux based distros..
-# but for now I only use macos - so if anything else is used we will just kill
-# it
-if [ "$IS_MAC" = false ]; then
- 	sh -c "$(curl -fsSL https://starship.rs/install.sh)"
-	sudo apt-get install -y fish git grc fzf
-fi
+# # at some point, I'll convert these for a linux based distros..
+# # but for now I only use macos - so if anything else is used we will just kill
+# # it
+# if [ "$IS_MAC" = false ]; then
+#  	## sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+# 	#sudo apt-get install -y fish git grc fzf
+# fi
 
 # if is mac
 if [ "$IS_MAC" = true ]; then
@@ -53,5 +53,6 @@ if [ "$IS_MAC" = true ]; then
 fi
 
 
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 # run bootstrap - from now on the only shell we run is fish
-./bootstrap.fish
+$SCRIPT_DIR/bootstrap.fish
