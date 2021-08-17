@@ -2,11 +2,30 @@
 #
 # bootstrap installs things.
 
-set -gx DOTFILES_ROOT (pwd -P)
-set -gx DOTFILES (pwd -P)
+set -gx DOTFILES_ROOT (cd (dirname (status -f)); and pwd) 
+set -gx DOTFILES (cd (dirname (status -f)); and pwd) 
 
 
-. ./fish/functions/_logging_functions.fish
+function info
+	echo [(set_color --bold) ' .. ' (set_color normal)] $argv
+end
+
+function user
+	echo [(set_color --bold) ' ?? ' (set_color normal)] $argv
+end
+
+function success
+	echo [(set_color --bold green) ' OK ' (set_color normal)] $argv
+end
+
+function abort
+	echo [(set_color --bold yellow) ABRT (set_color normal)] $argv
+	exit 1
+end
+
+function fail
+	echo [(set_color --bold red) ' FAIL ' (set_color normal)] $argv
+end
 
 function on_exit -p %self
     if not contains $argv[3] 0
@@ -18,10 +37,9 @@ function setup_gitconfig
     set managed (git config --global --get dotfiles.managed)
     # if there is no user.email, we'll assume it's a new machine/setup and ask it
     if test -z (git config --global --get user.email)
-        user 'What is your github author name?'
-        read user_name
-        user 'What is your github author email?'
-        read user_email
+
+        set -l user_name "Sriram Venkatesh"
+        set -l user_email "venksriram@gmail.com"
 
         test -n $user_name
         or echo "please inform the git author name"
@@ -100,7 +118,7 @@ function install_dotfiles
     # 	set -Up fish_function_path $f
     # end
 
-    for f in $DOTFILES/*/conf.d/*.fish
+    for f in $DOTFILES_ROOT/*/conf.d/*.fish
         ln -sf $f ~/.config/fish/conf.d/(basename $f)
     end
 
@@ -117,9 +135,6 @@ function is_wsl
             return 1
     end
 end
-
-is_wsl
-and link_winhome
 
 set_universal_vars
 and success 'universal vars'
@@ -157,12 +172,12 @@ if ! grep (command -v fish) /etc/shells
     or abort 'setup /etc/shells'
 end
 
-test (which fish) = $SHELL
-and success 'dotfiles installed/updated!'
-and exit 0
+#test (which fish) = $SHELL
+#and success 'dotfiles installed/updated!'
+#and exit 0
 
 # the exit 0 is required for this to run in github actions - since the macos
 # runner is passwordless - the assumption is that this should pass locally
-chsh -s (which fish)
-and success set (fish --version) as the default shell.
-and exit 0
+# chsh -s (which fish)
+# and success set (fish --version) as the default shell.
+# and exit 0
