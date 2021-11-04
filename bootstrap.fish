@@ -122,8 +122,6 @@ is_wsl
 and link_winhome
 
 set_universal_vars
-and success 'universal vars'
-or abort 'universal vars'
 
 curl -sL git.io/fisher | source && fisher install jorgebucaran/fisher
 and success 'fisher'
