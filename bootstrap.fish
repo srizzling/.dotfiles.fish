@@ -91,9 +91,13 @@ function set_universal_vars
 end
 
 function install_dotfiles
+    # config files typically sit in .config/<>
+
     for src in $DOTFILES_ROOT/*/*.symlink
-        link_file $src $HOME/.(basename $src .symlink) backup
-        or abort 'failed to link config file'
+	set dir (string split -- / $src)[-2]
+	mkdir -p $dir
+        link_file $src $HOME/.config/$dir/(basename $src .symlink) backup
+        #or abort 'failed to link config file'
     end
 
     # for f in $DOTFILES/*/functions
