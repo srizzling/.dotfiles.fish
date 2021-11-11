@@ -1,12 +1,21 @@
 
 
 [character]
-success_symbol = "[λ](bold green)"
+success_symbol = "[λ](purple)"
+error_symbol = "[λ](red)"
+
+[aws]
+format = ' [$symbol($profile )(\($region\) )(\[$duration\])]($style)'
+style = "242"
+
 
 [aws.region_aliases]
 ap-southeast-2 = "ase2"
 us-west-2 = "usw2"
 us-east-1 = "use1"
+
+[hostname]
+style = "242"
 
 [cmake]
 disabled = true
@@ -25,8 +34,10 @@ disabled = true
 disabled = true
 
 [directory]
-read_only = " "
 truncate_to_repo = false
+truncation_length = 0
+read_only=" 🔒"
+style = "blue"
 
 [docker_context]
 disabled = true
@@ -50,10 +61,16 @@ disabled = true
 disabled = true
 
 [git_branch]
-symbol = " "
+format = "[$branch]($style)"
+style = "242"
 
 [git_status]
-format = "[$ahead_behind$untracked$modified]($style) "
+modified = "[*](218)"
+stashed = "[≡](cyan)"
+ahead = "[⇡](cyan)"
+diverged = "[⇡⇣](cyan)"
+behind = "[⇣](cyan)"
+format = '([$modified $ahead_behind]($style) )'
 
 [golang]
 disabled = true
