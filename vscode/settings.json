@@ -23,11 +23,11 @@
         "source.fixAll": true,
         "source.organizeImports": true
     },
-    "editor.fontFamily": "'Iosevka'",
+    "editor.fontFamily": "'Fira Code'",
     "editor.fontLigatures": true,
     "editor.formatOnType": true,
     "editor.hideCursorInOverviewRuler": true,
-    "editor.lineHeight": 24,
+    "editor.lineHeight": 20,
     "editor.minimap.enabled": false,
     "editor.overviewRulerBorder": false,
     "editor.rulers": [
@@ -62,6 +62,7 @@
     "window.zoomLevel": 1,
     "workbench.activityBar.visible": false,
     "workbench.colorTheme": "Nord",
+	"editor.fontSize": 12,
     "workbench.editorAssociations": {
     "workbench.startupEditor": "newUntitledFile",
     "yaml.customTags": [
