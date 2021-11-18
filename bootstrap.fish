@@ -114,6 +114,8 @@ function is_wsl
     switch (uname -a)
         case '*WSL*'
             return 0
+        case '*Microsoft*'
+            return 0
         case '*'
             return 1
     end
@@ -121,6 +123,7 @@ end
 
 is_wsl
 and link_winhome
+and set -Ux IS_WSL 0
 
 set_universal_vars
 

@@ -17,6 +17,13 @@ switch (uname -a)
         set vscode_home "$WINHOME/AppData/Roaming/Code/"
         mkdir -p $vscode_home
         and cp "$DOTFILES/vscode/settings.json" "$vscode_home/User/settings.json"
+    case '*Microsoft*'
+        # this may seem like a gross hack and it is but since
+        # windows doesn't support symlinks we need to copy the settings files
+        # so just run ./bootstrap.sh each time this file updates
+        set vscode_home "$WINHOME/AppData/Roaming/Code/"
+        mkdir -p $vscode_home
+        and cp "$DOTFILES/vscode/settings.json" "$vscode_home/User/settings.json"
     case 'Linux*'
         set vscode_home "$HOME/.config/Code"
         mkdir -p $vscode_home
