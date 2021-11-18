@@ -14,6 +14,14 @@ function on_exit -p %self
     end
 end
 
+function link_winhome -d "links the windows home directory back to wsl"
+    set -l USERPROFILE_DIRTY /mnt/(cmd.exe /c "echo %USERPROFILE%" 2>/dev/null | tr -d '\r')
+    set -l USERPROFILE_DIRTY2 (string replace -a "\\" "/" $USERPROFILE_DIRTY)
+    set -l USERPROFILE_DIRTY3 (string replace ":" "" $USERPROFILE_DIRTY2)
+    set -Ux WINHOME (string lower $USERPROFILE_DIRTY3)
+    ln -sf $WINHOME "$HOME/winhome"
+end
+
 function setup_gitconfig
 	set managed (git config --global --get dotfiles.managed)
 	# if there is no user.email, we'll assume it's a new machine/setup and ask it
