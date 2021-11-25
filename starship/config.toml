@@ -22,7 +22,7 @@ disabled = true
 
 [cmd_duration]
 min_time = 500
-format = "[$duration]($style) "
+format = " [$duration]($style)"
 
 [conda]
 disabled = true
@@ -70,7 +70,7 @@ stashed = "[≡](cyan)"
 ahead = "[⇡](cyan)"
 diverged = "[⇡⇣](cyan)"
 behind = "[⇣](cyan)"
-format = '([$modified $ahead_behind]($style) )'
+format = '([$modified $ahead_behind]($style))'
 
 [golang]
 disabled = true
