@@ -97,12 +97,12 @@ function install_dotfiles
 	set dir (string split -- / $src)[-2]
 	mkdir -p $dir
         link_file $src $HOME/.config/$dir/(basename $src .symlink) backup
-        #or abort 'failed to link config file'
+        or abort 'failed to link config file'
     end
 
-    # for f in $DOTFILES/*/functions
-    # 	set -Up fish_function_path $f
-    # end
+    for src in $DOTFILES_ROOT/*/.*.symlink
+	link_file $src $HOME/.(basename $src .symlink) backup
+    end
 
     for f in $DOTFILES/*/conf.d/*.fish
         ln -sf $f ~/.config/fish/conf.d/(basename $f)
