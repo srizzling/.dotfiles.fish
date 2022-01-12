@@ -14,52 +14,53 @@ function on_exit -p %self
     end
 end
 
-function setup_gitconfig
-    set managed (git config --global --get dotfiles.managed)
-    # if there is no user.email, we'll assume it's a new machine/setup and ask it
-    if test -z (git config --global --get user.email)
-        user 'What is your github author name?'
-        read user_name
-        user 'What is your github author email?'
-        read user_email
-
-        test -n $user_name
-        or echo "please inform the git author name"
-        test -n $user_email
-        or abort "please inform the git author email"
-
-        git config --global user.name $user_name
-        and git config --global user.email $user_email
-        or abort 'failed to setup git user name and email'
-    else if test '$managed' = "true"
-        # if user.email exists, let's check for dotfiles.managed config. If it is
-        # not true, we'll backup the gitconfig file and set previous user.email and
-        # user.name in the new one
-        set user_name (git config --global --get user.name)
-        and set user_email (git config --global --get user.email)
-        and mv ~/.gitconfig ~/.gitconfig.backup
-        and git config --global user.name $user_name
-        and git config --global user.email $user_email
-        and success "moved ~/.gitconfig to ~/.gitconfig.backup"
-        or abort 'failed to setup git user name and email'
-    else
-        # otherwise this gitconfig was already made by the dotfiles
-        info "already managed by dotfiles"
-    end
-    # include the gitconfig.local file
-    # finally make git knows this is a managed config already, preventing later
-    # overrides by this script
-    git config --global include.path ~/.gitconfig.local
-    and git config --global dotfiles.managed true
-    or abort 'failed to setup git'
-end
-
 function link_winhome -d "links the windows home directory back to wsl"
     set -l USERPROFILE_DIRTY /mnt/(cmd.exe /c "echo %USERPROFILE%" 2>/dev/null | tr -d '\r')
     set -l USERPROFILE_DIRTY2 (string replace -a "\\" "/" $USERPROFILE_DIRTY)
     set -l USERPROFILE_DIRTY3 (string replace ":" "" $USERPROFILE_DIRTY2)
     set -Ux WINHOME (string lower $USERPROFILE_DIRTY3)
     ln -sf $WINHOME "$HOME/winhome"
+end
+
+function setup_gitconfig
+	set managed (git config --global --get dotfiles.managed)
+	# if there is no user.email, we'll assume it's a new machine/setup and ask it
+	if test -z (git config --global --get user.email)
+		user 'What is your github author name?'
+		read user_name
+		user 'What is your github author email?'
+		read user_email
+
+		test -n $user_name
+			or echo "please inform the git author name"
+		test -n $user_email
+			or abort "please inform the git author email"
+
+		git config --global user.name $user_name
+			and git config --global user.email $user_email
+			or abort 'failed to setup git user name and email'
+	else if test '$managed' = "true"
+		# if user.email exists, let's check for dotfiles.managed config. If it is
+		# not true, we'll backup the gitconfig file and set previous user.email and
+		# user.name in the new one
+		set user_name (git config --global --get user.name)
+			and set user_email (git config --global --get user.email)
+			and mv ~/.gitconfig ~/.gitconfig.backup
+			and git config --global user.name $user_name
+			and git config --global user.email $user_email
+			and success "moved ~/.gitconfig to ~/.gitconfig.backup"
+			or abort 'failed to setup git user name and email'
+	else
+		# otherwise this gitconfig was already made by the dotfiles
+		info "already managed by dotfiles"
+	end
+	# include the gitconfig.local file
+	# finally make git knows this is a managed config already, preventing later
+	# overrides by this script
+	git config --global include.path ~/.gitconfig.local
+		and git config --global core.hooksPath $DOTFILES/git/hooks
+		and git config --global dotfiles.managed true
+		or abort 'failed to setup git'
 end
 
 function link_file -d "links a file keeping a backup"
@@ -117,6 +118,8 @@ function is_wsl
     switch (uname -a)
         case '*WSL*'
             return 0
+        case '*Microsoft*'
+            return 0
         case '*'
             return 1
     end
@@ -124,6 +127,7 @@ end
 
 is_wsl
 and link_winhome
+and set -Ux IS_WSL 0
 
 set_universal_vars
 
