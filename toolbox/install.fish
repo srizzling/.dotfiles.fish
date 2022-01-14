@@ -14,10 +14,7 @@ if test -f /run/.containerenv
     exit 0
 end
 
-podman build . -t $USER/toolbox:latest
-set SCRIPT_DIR (cd (dirname (status -f)); and pwd)
-
-toolbox create -c fedora-toolbox-34 -i $USER/fedora-toolbox
+toolbox create -c fedora-toolbox-35 -i ghcr.io/srizzling/toolbox:latest
 mkdir -p $HOME/.config/systemd/user
 
 if ! test -f "$HOME/.config/systemd/user/toolbox_ssh.service"

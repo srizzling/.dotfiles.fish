@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-toolbox:34
+FROM registry.fedoraproject.org/fedora-toolbox:35
 
 RUN sudo dnf upgrade -y && sudo dnf install -y glibc-all-langpacks direnv fish fzf git-delta libX11-xcb libdrm jq pinentry-tty git starship openssh-server && dnf clean all
 
@@ -18,3 +18,5 @@ RUN git clone https://github.com/garabik/grc.git ~/.grc && \
 
 ADD . /.dotfiles.fish
 RUN cd .dotfiles.fish && fish bootstrap.fish
+
+SHELL ["fish"]
