@@ -3,19 +3,15 @@
 # ensure the most update to version of asdf exists
 switch (uname)
     case 'Darwin'
-        brew install asdf
         set -Ux ASDF_HOME (brew --prefix asdf)
+    case '*fedora*'
+        # do no thing - its assumed this is a siliverblue instance
     case '*'
-        git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-        pushd ~/.asdf
-        set -l latesttag (git describe --abbrev=0 --tags)
-        git checkout $latesttag
-        popd
         set -Ux ASDF_HOME $HOME/.asdf
 end
 
-# # this is probably not great - but helps the first install work pretty nice
-# exec fish
+# ensure its sourced right now
+source $ASDF_HOME/asdf.fish
 
 # install plugins
 asdf plugin add nodejs
@@ -30,7 +26,7 @@ for v in $golang_versions_to_install
 end
 
 # node
-set -l node_versions_to_install lts 15.14.0 16.3.0
+set -l node_versions_to_install 14.15.0 lts 15.14.0 16.3.0
 for v in $node_versions_to_install
     asdf install nodejs $v
 end

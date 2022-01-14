@@ -1,0 +1,10 @@
+[Unit]
+Description=Launch sshd in Fedora Toolbox
+
+[Service]
+Type=longrun
+ExecPre=/usr/bin/podman start fedora-toolbox-35
+ExecStart=/usr/bin/toolbox run sudo /usr/sbin/sshd -D
+
+[Install]
+WantedBy=default.target
