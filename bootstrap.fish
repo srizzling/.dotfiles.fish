@@ -22,47 +22,6 @@ function link_winhome -d "links the windows home directory back to wsl"
     ln -sf $WINHOME "$HOME/winhome"
 end
 
-function setup_gitconfig
-	set managed (git config --global --get dotfiles.managed)
-	# if there is no user.email, we'll assume it's a new machine/setup and ask it
-	if test -z (git config --global --get user.email)
-		user 'What is your github author name?'
-		read user_name
-		user 'What is your github author email?'
-		read user_email
-
-		test -n $user_name
-			or echo "please inform the git author name"
-		test -n $user_email
-			or abort "please inform the git author email"
-
-		git config --global user.name $user_name
-			and git config --global user.email $user_email
-			or abort 'failed to setup git user name and email'
-	else if test '$managed' = "true"
-		# if user.email exists, let's check for dotfiles.managed config. If it is
-		# not true, we'll backup the gitconfig file and set previous user.email and
-		# user.name in the new one
-		set user_name (git config --global --get user.name)
-			and set user_email (git config --global --get user.email)
-			and mv ~/.gitconfig ~/.gitconfig.backup
-			and git config --global user.name $user_name
-			and git config --global user.email $user_email
-			and success "moved ~/.gitconfig to ~/.gitconfig.backup"
-			or abort 'failed to setup git user name and email'
-	else
-		# otherwise this gitconfig was already made by the dotfiles
-		info "already managed by dotfiles"
-	end
-	# include the gitconfig.local file
-	# finally make git knows this is a managed config already, preventing later
-	# overrides by this script
-	git config --global include.path ~/.gitconfig.local
-		and git config --global core.hooksPath $DOTFILES/git/hooks
-		and git config --global dotfiles.managed true
-		or abort 'failed to setup git'
-end
-
 function link_file -d "links a file keeping a backup"
     echo $argv | read -l old new backup
     if test -e $new
@@ -135,10 +94,6 @@ curl -sL git.io/fisher | source && fisher install jorgebucaran/fisher
 and success 'fisher'
 or abort 'fisher'
 
-setup_gitconfig
-and success 'gitconfig'
-or abort 'gitconfig'
-
 install_dotfiles
 and success 'dotfiles'
 or abort 'dotfiles'
@@ -162,13 +117,3 @@ if ! grep (command -v fish) /etc/shells
     and success 'added fish to /etc/shells'
     or abort 'setup /etc/shells'
 end
-
-test (which fish) = $SHELL
-and success 'dotfiles installed/updated!'
-and exit 0
-
-# the exit 0 is required for this to run in github actions - since the macos
-# runner is passwordless - the assumption is that this should pass locally
-chsh -s (which fish)
-and success set (fish --version) as the default shell.
-and exit 0

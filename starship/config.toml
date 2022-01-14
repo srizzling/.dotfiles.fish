@@ -152,3 +152,11 @@ disabled = true
 
 [zig]
 disabled = true
+
+[custom.toolbox]
+command = """ grep -Po 'name="\\K[^"]+' /run/.containerenv """
+files = [ "/run/.containerenv" ]
+when = "test -f /run/.containerenv"
+style = "242"
+symbol = "🧰"
+format = "[$symbol ($output)]($style)"
