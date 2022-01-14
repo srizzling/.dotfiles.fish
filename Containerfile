@@ -1,6 +1,6 @@
 FROM registry.fedoraproject.org/fedora-toolbox:34
 
-RUN sudo dnf upgrade && sudo dnf install -y glibc-all-langpacks direnv fish fzf git-delta libX11-xcb libdrm jq pinentry-tty git starship openssh-server && dnf clean all
+RUN sudo dnf upgrade -y && sudo dnf install -y glibc-all-langpacks direnv fish fzf git-delta libX11-xcb libdrm jq pinentry-tty git starship openssh-server && dnf clean all
 
 RUN printf "Port 2222\nListenAddress localhost\nPermitEmptyPasswords yes\n" >> /etc/ssh/sshd_config \
 	&& /usr/libexec/openssh/sshd-keygen rsa \
