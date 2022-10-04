@@ -101,8 +101,8 @@ function install_dotfiles
         or abort 'failed to link config file'
     end
 
-    for src in $DOTFILES_ROOT/*/.*.symlink
-	link_file $src $HOME/.(basename $src .symlink) backup
+    for f in $DOTFILES/*/functions
+    	set -Up fish_function_path $f
     end
 
     for f in $DOTFILES/*/conf.d/*.fish
