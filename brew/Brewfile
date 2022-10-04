@@ -1,9 +1,7 @@
 tap "adoptopenjdk/openjdk"
 tap "aws/tap"
-tap "chef/chef"
 tap "cjbassi/gotop"
 tap "getantibody/tap"
-tap "go-task/tap"
 tap "golangci/tap"
 tap "goreleaser/tap"
 tap "homebrew/bundle"
@@ -12,9 +10,6 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
-tap "koekeishiya/formulae"
-tap "pact-foundation/pact-ruby-standalone"
-tap "remind101/formulae"
 tap "rigellute/tap"
 tap "tylerbrock/saw"
 tap "versent/taps"
@@ -58,8 +53,6 @@ brew "google-java-format"
 brew "gradle"
 # Colorize logfiles and command output
 brew "grc"
-# Java-based scripting language
-brew "groovy"
 # Kubernetes package manager
 brew "helm"
 # Improved top (interactive process viewer)
@@ -120,10 +113,6 @@ brew "go-task/tap/go-task"
 brew "golangci/tap/golangci-lint"
 # Deliver Go binaries as fast and easily as possible
 brew "goreleaser/tap/goreleaser"
-# Simple hotkey-daemon for macOS.
-brew "koekeishiya/formulae/skhd"
-# A tiling window manager for macOS based on binary space partitioning.
-brew "koekeishiya/formulae/yabai"
 # A standalone pact command line executable using the ruby pact implementation and Travelling Ruby
 brew "pact-foundation/pact-ruby-standalone/pact-ruby-standalone"
 # Easily assume AWS roles in your terminal
