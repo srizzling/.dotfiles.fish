@@ -34,7 +34,7 @@ disabled = true
 disabled = true
 
 [directory]
-truncate_to_repo = false
+truncate_to_repo = true
 truncation_length = 0
 read_only=" 🔒"
 style = "blue"

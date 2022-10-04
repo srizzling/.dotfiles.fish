@@ -10,22 +10,41 @@ function get_latest_linux_release
         | string match -e "linux_amd64"
 end
 
+function install_s2a_for_linux
+	mkdir -p ~/.bin
+	and wget -q (get_latest_linux_release) -O - | tar -xz -C ~/.bin
+	and chmod u+x ~/.bin/saml2aws
+	and rm ~/.bin/*.md
+	and echo "saml2aws: successfully installed"
+	or echo "saml2aws: failed to install"
+end
+
+# global configuration for saml2aws
+# Always set the sessionduration to be 6 hours
+set -Ux SAML2AWS_SESSION_DURATION 21600
+
+# add saml2aws shortcut for logging in without prmopt
+alias --save s2a="saml2aws --skip-prompt"
+
 switch (uname -a)
-    case 'Darwin*'
-        if ! command -qs code
+	case 'Darwin*'
+        if ! command -qs saml2aws
             brew install saml2aws
         else
             brew upgrade saml2aws
         end
     case '*'
-        mkdir -p ~/.bin
-        and wget -q (get_latest_linux_release) -O - | tar -xz -C ~/.bin
-        and chmod u+x ~/.bin/saml2aws
-        and rm ~/.bin/*.md
-        and echo "saml2aws: successfully installed"
-        or echo "saml2aws: failed to install"
+		install_s2a_for_linux
+			and echo "saml2aws: successfully installed"
+			or echo "saml2aws: failed to install"
 end
 
+# extra configuration required for WSL setup
+# due to no support for X11 to use gnome keyring
+if [ $IS_WSL = 0 ]
+	set -Ux SAML2AWS_KEYRING_BACKEND pass
+	set -Ux GPG_TTY ( tty )
+end
 
 
 
