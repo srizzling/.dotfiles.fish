@@ -12,7 +12,13 @@ brew "grc"
 brew "saml2aws"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Voice and text chat software
+cask "discord"
 # Sans-serif, slab-serif, monospace and quasi‑proportional typeface family
 cask "font-iosevka"
 # Developer targeted fonts with a high number of glyphs
 cask "font-iosevka-nerd-font"
+# Meet, chat, call, and collaborate in just one place
+cask "microsoft-teams"
+# Team communication and collaboration software
+cask "slack"
