@@ -4,6 +4,10 @@ tap "homebrew/cask-fonts"
 tap "homebrew/core"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Container runtimes on MacOS (and Linux) with minimal setup
+brew "colima"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
 # Colorize logfiles and command output
@@ -18,6 +22,10 @@ cask "discord"
 cask "font-iosevka"
 # Developer targeted fonts with a high number of glyphs
 cask "font-iosevka-nerd-font"
+# Provides updates to various Microsoft products
+cask "microsoft-auto-update"
+# Email client
+cask "microsoft-outlook"
 # Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
 # Team communication and collaboration software
