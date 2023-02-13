@@ -14,28 +14,17 @@ switch (uname)
         set -Ux ASDF_HOME $HOME/.asdf
 end
 
-# # this is probably not great - but helps the first install work pretty nice
-# exec fish
+# plugins to install
+set -l asdf_plugins nodejs golang python direnv saml2aws awscli
+for p in $asdf_plugins
+    asdf plugin add $p
+end
 
-# install plugins
-asdf plugin add nodejs
-asdf plugin add golang
-asdf plugin add python
-asdf plugin add java
-asdf plugin add direnv
+# set globals for all plugins to latest
+for p in $asdf_plugins
+    asdf global $p latest
+end
 
-# direnv
+# direnv requires special setup
 asdf direnv setup --shell fish --version latest
-
-# golang
-set -l golang_versions_to_install 1.14 1.15 1.16 1.17 1.18
-for v in $golang_versions_to_install
-    asdf install golang $v
-end
-
-# node
-set -l node_versions_to_install lts 14.15.0 15.14.0 16.3.0
-for v in $node_versions_to_install
-    asdf install nodejs $v
-end
 
