@@ -1,134 +1,18 @@
-tap "adoptopenjdk/openjdk"
-tap "aws/tap"
-tap "cjbassi/gotop"
-tap "getantibody/tap"
-tap "golangci/tap"
-tap "goreleaser/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
 tap "homebrew/core"
-tap "homebrew/services"
-tap "rigellute/tap"
-tap "tylerbrock/saw"
-tap "versent/taps"
-# Shell plugin manager
-brew "antibody"
-# Record and share terminal sessions
-brew "asciinema"
-# Official Amazon AWS command-line interface
-brew "awscli"
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
-# Load/unload environment variables based on $PWD
-brew "direnv"
-# Docker Credential Helper for Amazon ECR
-brew "docker-credential-helper-ecr", link: false
-# Command-line DNS client
-brew "dog"
-# Modern replacement for 'ls'
-brew "exa"
-# Simple, fast and user-friendly alternative to find
-brew "fd"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
+brew "asdf"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
-# Command-line fuzzy finder written in Go
-brew "fzf"
-# GitHub command-line tool
-brew "gh"
-# Distributed revision control system
-brew "git"
-# Syntax-highlighting pager for git and diff output
-brew "git-delta"
-# Open source programming language to build simple/reliable/efficient software
-brew "go"
-# Development kit for the Java programming language
-brew "openjdk"
-# Reformats Java source code to comply with Google Java Style
-brew "google-java-format"
-# Open-source build automation tool based on the Groovy and Kotlin DSL
-brew "gradle"
 # Colorize logfiles and command output
 brew "grc"
-# Kubernetes package manager
-brew "helm"
-# Improved top (interactive process viewer)
-brew "htop"
-# User-friendly cURL replacement (command-line HTTP client)
-brew "httpie"
-# Manage your Java environment
-brew "jenv"
-# Lightweight and flexible command-line JSON processor
-brew "jq"
-# Kubernetes command-line interface
-brew "kubernetes-cli"
-# Tool that can switch between kubectl contexts easily and create aliases
-brew "kubectx"
-# Postgres C API library
-brew "libpq"
-# Utility for directing compilation
-brew "make"
-# Java-based project management
-brew "maven"
-# Collection of tools that nobody wrote when UNIX was young
-brew "moreutils"
-# Platform built on V8 to build network applications
-brew "node"
-# Manage multiple Node.js versions
-brew "nvm"
-# CLI for Postgres with auto-completion and syntax highlighting
-brew "pgcli"
-# Object-relational database system
-brew "postgresql"
-# Python version management
-brew "pyenv"
-# Pyenv plugin to manage virtualenv
-brew "pyenv-virtualenv"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.8"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
-# Static analysis and lint tool, for (ba)sh scripts
-brew "shellcheck"
+# Login and retrieve AWS temporary credentials using a SAML IDP
+brew "saml2aws"
 # Cross-shell prompt for astronauts
 brew "starship"
-# Traceroute implementation using TCP packets
-brew "tcptraceroute"
-# Display directories as trees (with optional color/HTML output)
-brew "tree"
-# Internet file retriever
-brew "wget"
-# UNIX shell (command interpreter)
-brew "zsh"
-# AWS SAM CLI 🐿 is a tool for local development and testing of Serverless applications
-brew "aws/tap/aws-sam-cli"
-# A terminal based graphical activity monitor inspired by gtop and vtop
-brew "cjbassi/gotop/gotop"
-# Task runner / simpler Make alternative written in Go
-brew "go-task/tap/go-task"
-# Fast linters runner for Go.
-brew "golangci/tap/golangci-lint"
-# Deliver Go binaries as fast and easily as possible
-brew "goreleaser/tap/goreleaser"
-# A standalone pact command line executable using the ruby pact implementation and Travelling Ruby
-brew "pact-foundation/pact-ruby-standalone/pact-ruby-standalone"
-# Easily assume AWS roles in your terminal
-brew "remind101/formulae/assume-role"
-# A terminal user interface for Spotify
-brew "rigellute/tap/spotify-tui"
-# Fast, multipurpose tool for AWS CloudWatch Logs
-brew "tylerbrock/saw/saw"
-# Securely stores and accesses AWS credentials in a development environment
-cask "aws-vault"
-cask "font-inconsolata"
 # Sans-serif, slab-serif, monospace and quasi‑proportional typeface family
 cask "font-iosevka"
+# Developer targeted fonts with a high number of glyphs
 cask "font-iosevka-nerd-font"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
-cask "java"
-cask "java8"
-cask "mtmr"
