@@ -18,8 +18,6 @@ brew "exa"
 brew "fish"
 # Colorize logfiles and command output
 brew "grc"
-# Login and retrieve AWS temporary credentials using a SAML IDP
-brew "saml2aws"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Application launcher and productivity software
