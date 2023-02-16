@@ -8,6 +8,10 @@ brew "asdf"
 brew "colima"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
+# Isolated development environments using Docker
+brew "docker-compose"
+# Modern replacement for 'ls'
+brew "exa"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
 # Colorize logfiles and command output
@@ -16,6 +20,10 @@ brew "grc"
 brew "saml2aws"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Application launcher and productivity software
+cask "alfred"
+# Databases & SQL IDE
+cask "datagrip"
 # Voice and text chat software
 cask "discord"
 # Sans-serif, slab-serif, monospace and quasi‑proportional typeface family
@@ -30,3 +38,5 @@ cask "microsoft-outlook"
 cask "microsoft-teams"
 # Team communication and collaboration software
 cask "slack"
+# Music streaming service
+cask "spotify"
