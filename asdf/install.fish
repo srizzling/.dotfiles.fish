@@ -2,9 +2,8 @@
 
 # ensure the most update to version of asdf exists
 switch (uname)
-    case 'Darwin'
+    case Darwin
         brew install asdf
-        set -Ux ASDF_HOME (brew --prefix asdf)
     case '*'
         git clone https://github.com/asdf-vm/asdf.git ~/.asdf
         pushd ~/.asdf
@@ -14,8 +13,12 @@ switch (uname)
         set -Ux ASDF_HOME $HOME/.asdf
 end
 
+# unforently asdf doesn't support m1/m2 for awscli - so we are just skiping
+# for mac altogeather it is installed via brew instead
+
+
 # plugins to install
-set -l asdf_plugins nodejs golang python direnv saml2aws awscli
+set -l asdf_plugins nodejs golang python direnv saml2aws
 for p in $asdf_plugins
     asdf plugin add $p
 end
@@ -27,4 +30,3 @@ end
 
 # direnv requires special setup
 asdf direnv setup --shell fish --version latest
-
