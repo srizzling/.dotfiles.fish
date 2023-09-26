@@ -59,8 +59,11 @@ function setup_gitconfig
 	# overrides by this script
 	git config --global include.path ~/.gitconfig.local
 		and git config --global core.hooksPath $DOTFILES/git/hooks
+        and git config --global alias.fixup "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
 		and git config --global dotfiles.managed true
+        and git config --global rebase.autosquash true
 		or abort 'failed to setup git'
+
 end
 
 function link_file -d "links a file keeping a backup"
