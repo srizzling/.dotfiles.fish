@@ -5,29 +5,48 @@ switch (uname)
     case Darwin
         brew install asdf
     case '*'
-        git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-        # pushd ~/.asdf
-        # set -l latesttag (git describe --abbrev=0 --tags)
-        # git checkout $latesttag
-        # popd
+        # Check if the ~/.asdf directory exists
+        if test -d ~/.asdf
+            # If exists, navigate and pull the latest code
+            cd ~/.asdf
+            git pull origin master
+        else
+            # Otherwise, clone the repository
+            git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+        end
+
         set -Ux ASDF_HOME $HOME/.asdf
 
         if not grep -q "source ~/.asdf/asdf.fish" ~/.config/fish/config.fish
             echo "source ~/.asdf/asdf.fish" >>~/.config/fish/config.fish
         end
+
+        # when we are in ubuntu to install python we need build essitionals
+        if test (cat /etc/os-release | grep '^ID=ubuntu' -c) -gt 0
+            sudo apt-get install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev curl libbz2-dev
+        end
 end
 
 
 # plugins to install
-set -l asdf_plugins nodejs golang direnv saml2aws awscli exa starship jq gum rust
+set -l asdf_plugins python nodejs golang direnv saml2aws awscli exa starship jq gum rust
+
 for p in $asdf_plugins
-    asdf plugin add $p
-    asdf install $p latest
-    asdf global $p latest
+    begin
+        asdf plugin add $p
+        asdf install $p latest
+        and asdf global $p latest
+    end &
 end
+
+# Wait for all jobs to complete
+wait
+
 
 # direnv requires special setup
 asdf direnv setup --shell fish --version latest
+
+set -Ux ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY latest_available
 
 # https://github.com/asdf-vm/asdf-nodejs#nvmrc-and-node-version-support
 ln -sf $DOTFILES/asdf/.asdfrc $HOME/.asdfrc

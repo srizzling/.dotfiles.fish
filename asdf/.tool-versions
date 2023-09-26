@@ -1,10 +1,10 @@
 golang 1.21.0
-nodejs 20.5.1
-python 3.10.2
+nodejs 20.6.0
+python 3.11.5
 direnv 2.32.3
 exa 0.10.1
-awscli 2.13.9
-rust 1.67.1
+awscli 2.13.15
+rust 1.72.0
 saml2aws 2.36.10
 starship 1.16.0
 jq 1.6
