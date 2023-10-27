@@ -1,9 +1,13 @@
 #!/usr/bin/env fish
 
+# plugin defintions
+set -l asdf_plugins python nodejs golang direnv saml2aws awscli starship jq gum rust
+
 # ensure the most update to version of asdf exists
 switch (uname)
     case Darwin
         brew install asdf
+        set -a asdf_plugins exa
     case '*'
         # Check if the ~/.asdf directory exists
         if test -d ~/.asdf
@@ -29,7 +33,7 @@ end
 
 
 # plugins to install
-set -l asdf_plugins python nodejs golang direnv saml2aws awscli exa starship jq gum rust
+set -l asdf_plugins python nodejs golang direnv saml2aws awscli starship jq gum rust
 
 for p in $asdf_plugins
     begin
@@ -41,7 +45,6 @@ end
 
 # Wait for all jobs to complete
 wait
-
 
 # direnv requires special setup
 asdf direnv setup --shell fish --version latest
