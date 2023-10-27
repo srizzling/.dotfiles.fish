@@ -10,5 +10,5 @@
 # ) | crontab -
 
 if command -q brew
-    ./brew-update.sh && brew bundle install --file=$DOTFILES_ROOT/brew/Brewfile
+    $DOTFILES/brew/brew-update.sh && brew bundle install --file=$DOTFILES_ROOT/brew/Brewfile
 end
