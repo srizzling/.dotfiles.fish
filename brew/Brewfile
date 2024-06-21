@@ -10,6 +10,8 @@ brew "fish"
 brew "git"
 # Colorize logfiles and command output
 brew "grc"
+# Clone of ls with colorful output, file type icons, and more
+brew "lsd"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
 # Interpreted, interactive, object-oriented programming language
