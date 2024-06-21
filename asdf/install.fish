@@ -56,5 +56,3 @@ ln -sf $DOTFILES/asdf/.asdfrc $HOME/.asdfrc
 ln -sf $DOTFILES/asdf/.default-npm-packages $HOME/.default-npm-packages
 ln -sf $DOTFILES/asdf/.tool-versions $HOME/.tool-versions
 
-# https://github.com/asdf-community/asdf-golang#goroot
-. ~/.asdf/plugins/golang/set-env.fish
