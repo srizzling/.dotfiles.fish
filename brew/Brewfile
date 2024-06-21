@@ -16,6 +16,8 @@ brew "lsd"
 brew "python@3.10"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.8"
+# Rust toolchain installer
+brew "rustup-init"
 # Login and retrieve AWS temporary credentials using a SAML IDP
 brew "saml2aws"
 # Cross-shell prompt for astronauts
