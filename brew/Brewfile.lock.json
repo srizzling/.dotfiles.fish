@@ -844,45 +844,45 @@
         }
       },
       "cfn-lint": {
-        "version": "1.9.6",
+        "version": "1.9.7",
         "bottle": {
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
           "files": {
             "arm64_sonoma": {
               "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/cfn-lint/blobs/sha256:eb538f0b1d0105ded40c56622665fc493098eb92b8ee8d8b0c6ffe2007c501a2",
-              "sha256": "eb538f0b1d0105ded40c56622665fc493098eb92b8ee8d8b0c6ffe2007c501a2"
+              "url": "https://ghcr.io/v2/homebrew/core/cfn-lint/blobs/sha256:bd66b2c59a8607dd1897ad5f1fe498b007f1aa371753402cb61be47d30f28ea8",
+              "sha256": "bd66b2c59a8607dd1897ad5f1fe498b007f1aa371753402cb61be47d30f28ea8"
             },
             "arm64_ventura": {
               "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/cfn-lint/blobs/sha256:93c9dc09a8cb6dd566d5cf65acd98155158825c358453096bfe0dd3ada6ddf85",
-              "sha256": "93c9dc09a8cb6dd566d5cf65acd98155158825c358453096bfe0dd3ada6ddf85"
+              "url": "https://ghcr.io/v2/homebrew/core/cfn-lint/blobs/sha256:b59667ce99bb38f0cc6fff4cb439357e5905d72dbfb4cc2305f7e9bb50354772",
+              "sha256": "b59667ce99bb38f0cc6fff4cb439357e5905d72dbfb4cc2305f7e9bb50354772"
             },
             "arm64_monterey": {
               "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/cfn-lint/blobs/sha256:6c0388c9cd7997e933efa433fc27618bad27508ed3a08426a94e0339952f479e",
-              "sha256": "6c0388c9cd7997e933efa433fc27618bad27508ed3a08426a94e0339952f479e"
+              "url": "https://ghcr.io/v2/homebrew/core/cfn-lint/blobs/sha256:609d152a292acee91b40d93e204a0206bb82550f04432b50787151212541825b",
+              "sha256": "609d152a292acee91b40d93e204a0206bb82550f04432b50787151212541825b"
             },
             "sonoma": {
               "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/cfn-lint/blobs/sha256:2295690ed4608af000f71f8c397937edb42532de8a8c84ec69ef16463f9a52da",
-              "sha256": "2295690ed4608af000f71f8c397937edb42532de8a8c84ec69ef16463f9a52da"
+              "url": "https://ghcr.io/v2/homebrew/core/cfn-lint/blobs/sha256:24c820dc2387933ffd535dcb9b29c87eb363676b2058039e8a97d50d057655cb",
+              "sha256": "24c820dc2387933ffd535dcb9b29c87eb363676b2058039e8a97d50d057655cb"
             },
             "ventura": {
               "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/cfn-lint/blobs/sha256:8890073e345e9563ca95d7a972625937ed72d4d0f952695f4dde83619bdedb67",
-              "sha256": "8890073e345e9563ca95d7a972625937ed72d4d0f952695f4dde83619bdedb67"
+              "url": "https://ghcr.io/v2/homebrew/core/cfn-lint/blobs/sha256:3cdc9ba74c36cfd25dd1f4be7a6664eeac641972dd528fb7b82f055cf50d0cf8",
+              "sha256": "3cdc9ba74c36cfd25dd1f4be7a6664eeac641972dd528fb7b82f055cf50d0cf8"
             },
             "monterey": {
               "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/cfn-lint/blobs/sha256:bd7c1686678a6074650e7f776b54d82134d34d2d32b70ae08d7943be61a68094",
-              "sha256": "bd7c1686678a6074650e7f776b54d82134d34d2d32b70ae08d7943be61a68094"
+              "url": "https://ghcr.io/v2/homebrew/core/cfn-lint/blobs/sha256:8b74123bc00a86d3bc6f68bf5f032f02cc554a428b28a50a08fa60d62f185427",
+              "sha256": "8b74123bc00a86d3bc6f68bf5f032f02cc554a428b28a50a08fa60d62f185427"
             },
             "x86_64_linux": {
               "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/cfn-lint/blobs/sha256:b06f4fd0481dee0b6f62fe3a86dea1327bbf875be9f89de89527edf1a372aa2b",
-              "sha256": "b06f4fd0481dee0b6f62fe3a86dea1327bbf875be9f89de89527edf1a372aa2b"
+              "url": "https://ghcr.io/v2/homebrew/core/cfn-lint/blobs/sha256:9512c795d0707b385ad27ad63a4166dbb1b30d277002899a682c1e0a35197865",
+              "sha256": "9512c795d0707b385ad27ad63a4166dbb1b30d277002899a682c1e0a35197865"
             }
           }
         }
@@ -994,7 +994,7 @@
         }
       },
       "font-iosevka": {
-        "version": "31.1.0",
+        "version": "31.2.0",
         "options": {
           "full_name": "font-iosevka"
         }
@@ -1153,7 +1153,8 @@
       "tal7aouy.theme": null,
       "theholycoder.swagger-tools": null,
       "yoavbls.pretty-ts-errors": null,
-      "zoellner.openapi-preview": null
+      "zoellner.openapi-preview": null,
+      "be5invis.vscode-custom-css": null
     }
   },
   "system": {
