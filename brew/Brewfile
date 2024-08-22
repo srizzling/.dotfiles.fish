@@ -2,8 +2,6 @@ tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "nikitabobko/tap"
 tap "paldepind/tap"
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
 # Validate CloudFormation templates against the CloudFormation spec
 brew "cfn-lint"
 # Get a file from an HTTP, HTTPS or FTP server
