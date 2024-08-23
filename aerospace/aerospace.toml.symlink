@@ -100,8 +100,8 @@ alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
 # move window to different monitors
-alt-shift-left = 'move-node-to-monitor --wrap-around left'
-alt-shift-right = 'move-node-to-monitor --wrap-around right'
+alt-shift-left = ['move-node-to-monitor --wrap-around left', 'focus-monitor left']
+alt-shift-right = ['move-node-to-monitor --wrap-around right', 'focus-monitor right']
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 alt-shift-equal = 'resize smart +50'
