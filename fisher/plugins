@@ -1,6 +1,5 @@
 jethrokuan/z
 jorgebucaran/autopair.fish
-jethrokuan/fzf
 oh-my-fish/plugin-grc
 dracula/fish
 jorgebucaran/nvm.fish
@@ -11,3 +10,4 @@ srizzling/taxi-fish
 orefalo/grc
 catppuccin/fish
 paldepind/projectdo
+patrickf1/fzf.fish
