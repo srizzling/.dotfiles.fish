@@ -1,18 +1,23 @@
 
 
 [character]
-success_symbol = "[λ](purple)"
 error_symbol = "[λ](red)"
+success_symbol = "[λ](purple)"
 
 [aws]
 format = ' [$symbol($profile )(\($region\) )(\[$duration\])]($style)'
 style = "242"
 
-
 [aws.region_aliases]
 ap-southeast-2 = "ase2"
-us-west-2 = "usw2"
 us-east-1 = "use1"
+us-west-2 = "usw2"
+
+[azure]
+disabled = false
+format = '[$symbol($subscription)]($style) '
+style = '242'
+symbol = '󰠅 '
 
 [hostname]
 style = "242"
@@ -21,8 +26,8 @@ style = "242"
 disabled = true
 
 [cmd_duration]
-min_time = 500
 format = " [$duration]($style)"
+min_time = 500
 
 [conda]
 disabled = true
@@ -34,10 +39,10 @@ disabled = true
 disabled = true
 
 [directory]
+read_only = " 🔒"
+style = "blue"
 truncate_to_repo = true
 truncation_length = 0
-read_only=" 🔒"
-style = "blue"
 
 [docker_context]
 disabled = true
@@ -61,16 +66,17 @@ disabled = true
 disabled = true
 
 [git_branch]
-format = "[$branch]($style)"
+format = "[$symbol](red)[($branch)]($style)"
 style = "242"
+symbol = ""
 
 [git_status]
+ahead = "[⇡](cyan)"
+behind = "[⇣](cyan)"
+diverged = "[⇡⇣](cyan)"
+format = '([$modified $ahead_behind]($style))'
 modified = "[*](218)"
 stashed = "[≡](cyan)"
-ahead = "[⇡](cyan)"
-diverged = "[⇡⇣](cyan)"
-behind = "[⇣](cyan)"
-format = '([$modified $ahead_behind]($style))'
 
 [golang]
 disabled = true
