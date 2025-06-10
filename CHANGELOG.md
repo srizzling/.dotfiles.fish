@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/srizzling/.dotfiles.fish/compare/v1.1.0...v1.1.1) (2025-06-10)
+
+### Bug Fixes
+
+* **aerospace,ghostty:** 🐛 render windows as seperate tabs ([e74005c](https://github.com/srizzling/.dotfiles.fish/commit/e74005c92126bc4f6aba6c97144a349cf5fec01f))
+* **ghostty:** 🐛 add some window padding ([cf5d11e](https://github.com/srizzling/.dotfiles.fish/commit/cf5d11eb5809d49221c91a63213da5e720851bd8))
+
 # [1.1.0](https://github.com/srizzling/.dotfiles.fish/compare/v1.0.0...v1.1.0) (2025-06-10)
 
 
