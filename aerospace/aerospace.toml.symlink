@@ -108,8 +108,8 @@ alt-shift-equal = 'resize smart +50'
 alt-shift-minus = 'resize smart -50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-1 = 'workspace 1' 
-alt-2 = 'workspace 2' 
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
 alt-b = 'workspace B' # for browser
 alt-c = 'workspace C' # for code
 alt-e = 'workspace E' # for email
@@ -119,8 +119,8 @@ alt-s = 'workspace S' # for socials (teams, slack, etc.)
 alt-t = 'workspace T' # for terminal
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-1 = 'move-node-to-workspace 1' 
-alt-shift-2 = 'move-node-to-workspace 2' 
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
 alt-shift-b = 'move-node-to-workspace B' # for browser
 alt-shift-c = 'move-node-to-workspace C' # for code
 alt-shift-e = 'move-node-to-workspace E' # for email
@@ -158,6 +158,12 @@ run = "move-node-to-workspace T"
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
 run = "move-node-to-workspace T"
+
+[[on-window-detected]]
+if.app-id="com.mitchellh.ghostty"
+run= [
+  "layout tiling",
+]
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefox'
