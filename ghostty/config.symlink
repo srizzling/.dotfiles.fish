@@ -1,3 +1,6 @@
 theme = catppuccin-mocha
 font-size = 23
 font-family = "Iosevka NFM"
+
+window-padding-x = 2,2
+window-padding-y = 1,1
