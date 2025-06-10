@@ -1,31 +1,20 @@
 tap "homebrew/bundle"
 tap "nikitabobko/tap"
 tap "stax-labs/taps"
-# Official Amazon AWS command-line interface
 brew "awscli"
-# Load/unload environment variables based on $PWD
 brew "direnv"
-# User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
-# Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
-# Interpreted, interactive, object-oriented programming language
 brew "python@3.8"
-# Official CLI for logging into Stax-managed AWS accounts.
 brew "stax-labs/taps/stax2aws"
-# AeroSpace is an i3-like tiling window manager for macOS
 cask "aerospace"
-# Voice and text chat software
 cask "discord"
-# Screenshot software
 cask "flameshot"
 cask "font-iosevka"
 cask "font-iosevka-nerd-font"
-# Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# Control your tools with a few keystrokes
+cask "orbstack"
 cask "raycast"
-# Native desktop client for WhatsApp
 cask "whatsapp"
 vscode "adpyke.vscode-sql-formatter"
 vscode "alexdauenhauer.catppuccin-noctis"
@@ -42,10 +31,6 @@ vscode "dbaeumer.vscode-eslint"
 vscode "dotjoshjohnson.xml"
 vscode "editorconfig.editorconfig"
 vscode "enkia.tokyo-night"
-vscode "equinusocio.moxer-icons"
-vscode "equinusocio.moxer-theme"
-vscode "equinusocio.vsc-material-theme"
-vscode "equinusocio.vsc-material-theme-icons"
 vscode "eriklynd.json-tools"
 vscode "esbenp.prettier-vscode"
 vscode "estivo.csv-editor"
@@ -70,6 +55,7 @@ vscode "mindaro-dev.file-downloader"
 vscode "mkhl.direnv"
 vscode "mohsen1.prettify-json"
 vscode "mquandalle.graphql"
+vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-dotnettools.csharp"
 vscode "ms-dotnettools.vscode-dotnet-runtime"
