@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 if test -e ~/.local/share/fonts/Inconsolata[wdth,wght].ttf ||
-    test -e ~/Library/Fonts/Inconsolata[wdth,wght].ttf
+        test -e ~/Library/Fonts/Inconsolata[wdth,wght].ttf
     exit 0
 end
 
@@ -16,7 +16,6 @@ switch (uname)
             brew tap -q homebrew/cask-fonts
             and brew install --cask font-iosevka
         end
-
 
         if brew list --cask font-iosevka-nerd-font >/dev/null 2>&1
             echo "font: isoevka-nerd-font already installed"

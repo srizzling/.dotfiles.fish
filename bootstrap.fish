@@ -5,7 +5,6 @@
 set -gx DOTFILES_ROOT (pwd -P)
 set -gx DOTFILES (pwd -P)
 
-
 . ./fish/functions/_logging_functions.fish
 
 function on_exit -p %self
@@ -23,46 +22,46 @@ function link_winhome -d "links the windows home directory back to wsl"
 end
 
 function setup_gitconfig
-	set managed (git config --global --get dotfiles.managed)
-	# if there is no user.email, we'll assume it's a new machine/setup and ask it
-	if test -z (git config --global --get user.email)
-		user 'What is your github author name?'
-		read user_name
-		user 'What is your github author email?'
-		read user_email
+    set managed (git config --global --get dotfiles.managed)
+    # if there is no user.email, we'll assume it's a new machine/setup and ask it
+    if test -z (git config --global --get user.email)
+        user 'What is your github author name?'
+        read user_name
+        user 'What is your github author email?'
+        read user_email
 
-		test -n $user_name
-			or echo "please inform the git author name"
-		test -n $user_email
-			or abort "please inform the git author email"
+        test -n $user_name
+        or echo "please inform the git author name"
+        test -n $user_email
+        or abort "please inform the git author email"
 
-		git config --global user.name $user_name
-			and git config --global user.email $user_email
-			or abort 'failed to setup git user name and email'
-	else if test '$managed' = "true"
-		# if user.email exists, let's check for dotfiles.managed config. If it is
-		# not true, we'll backup the gitconfig file and set previous user.email and
-		# user.name in the new one
-		set user_name (git config --global --get user.name)
-			and set user_email (git config --global --get user.email)
-			and mv ~/.gitconfig ~/.gitconfig.backup
-			and git config --global user.name $user_name
-			and git config --global user.email $user_email
-			and success "moved ~/.gitconfig to ~/.gitconfig.backup"
-			or abort 'failed to setup git user name and email'
-	else
-		# otherwise this gitconfig was already made by the dotfiles
-		info "already managed by dotfiles"
-	end
-	# include the gitconfig.local file
-	# finally make git knows this is a managed config already, preventing later
-	# overrides by this script
-	git config --global include.path ~/.gitconfig.local
-		and git config --global core.hooksPath $DOTFILES/git/hooks
-        and git config --global alias.fixup "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
-		and git config --global dotfiles.managed true
-        and git config --global rebase.autosquash true
-		or abort 'failed to setup git'
+        git config --global user.name $user_name
+        and git config --global user.email $user_email
+        or abort 'failed to setup git user name and email'
+    else if test '$managed' = true
+        # if user.email exists, let's check for dotfiles.managed config. If it is
+        # not true, we'll backup the gitconfig file and set previous user.email and
+        # user.name in the new one
+        set user_name (git config --global --get user.name)
+        and set user_email (git config --global --get user.email)
+        and mv ~/.gitconfig ~/.gitconfig.backup
+        and git config --global user.name $user_name
+        and git config --global user.email $user_email
+        and success "moved ~/.gitconfig to ~/.gitconfig.backup"
+        or abort 'failed to setup git user name and email'
+    else
+        # otherwise this gitconfig was already made by the dotfiles
+        info "already managed by dotfiles"
+    end
+    # include the gitconfig.local file
+    # finally make git knows this is a managed config already, preventing later
+    # overrides by this script
+    git config --global include.path ~/.gitconfig.local
+    and git config --global core.hooksPath $DOTFILES/git/hooks
+    and git config --global alias.fixup "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
+    and git config --global dotfiles.managed true
+    and git config --global rebase.autosquash true
+    or abort 'failed to setup git'
 
 end
 
@@ -98,14 +97,14 @@ function install_dotfiles
     # config files typically sit in .config/<>
 
     for src in $DOTFILES_ROOT/*/*.symlink
-	set dir (string split -- / $src)[-2]
-	mkdir -p $dir
+        set dir (string split -- / $src)[-2]
+        mkdir -p $dir
         link_file $src $HOME/.config/$dir/(basename $src .symlink) backup
         or abort 'failed to link config file'
     end
 
     for f in $DOTFILES/*/functions
-    	set -Up fish_function_path $f
+        set -Up fish_function_path $f
     end
 
     for f in $DOTFILES/*/conf.d/*.fish
@@ -168,27 +167,27 @@ and set -Ux IS_WSL 0
 set_universal_vars
 
 curl -sL git.io/fisher | source && fisher install jorgebucaran/fisher
-and success 'fisher'
-or abort 'fisher'
+and success fisher
+or abort fisher
 
 setup_gitconfig
-and success 'gitconfig'
-or abort 'gitconfig'
+and success gitconfig
+or abort gitconfig
 
 install_dotfiles
-and success 'dotfiles'
-or abort 'dotfiles'
+and success dotfiles
+or abort dotfiles
 
 fisher update
-and success 'plugins'
-or abort 'plugins'
+and success plugins
+or abort plugins
 
 link_host_specific_files
 set_host_specific_aliases
 
 mkdir -p ~/.config/fish/completions/
-and success 'completions'
-or abort 'completions'
+and success completions
+or abort completions
 
 for installer in */install.fish
     $installer

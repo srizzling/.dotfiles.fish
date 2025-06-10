@@ -11,11 +11,11 @@
 # 	echo "0 12 * * 4 $HOME/.dotfiles/brew/brew-update > ${TMPDIR:-/tmp}/brew_update.log 2>&1"
 # ) | crontab -
 
-if string match -q "Darwin" (uname)
+if string match -q Darwin (uname)
     if not command -q brew
         echo "Homebrew is not installed. Would you like to install it? (y/n)"
         read -l response
-        if string match -q "y" $response
+        if string match -q y $response
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
             and echo "Homebrew installed successfully."
             or echo "Failed to install Homebrew."
