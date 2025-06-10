@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/srizzling/.dotfiles.fish/compare/v1.0.0...v1.1.0) (2025-06-10)
+
+
+### Bug Fixes
+
+* **ghostty:** 🐛 fix loading of ghostty config ([fe7bf60](https://github.com/srizzling/.dotfiles.fish/commit/fe7bf602f95fe720eb7678f7c973346b029e112b))
+
+
+### Features
+
+* **aerospace:** ✨ assign ghostty to t workspace ([b738ff6](https://github.com/srizzling/.dotfiles.fish/commit/b738ff660f4ecddd3eeddabb343c47c02e289bd9))
+
 # 1.0.0 (2025-06-10)
 
 
