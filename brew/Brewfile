@@ -23,8 +23,6 @@ cask "font-iosevka"
 cask "font-iosevka-nerd-font"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# Browse, manage, inspect containers and images
-cask "podman-desktop"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Native desktop client for WhatsApp
