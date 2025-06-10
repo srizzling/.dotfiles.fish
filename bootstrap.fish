@@ -128,6 +128,39 @@ function is_wsl
     end
 end
 
+function get_hostname
+    set -l lhostname (hostname)
+    echo $lhostname
+end
+
+function link_host_specific_files -d "Links host-specific configuration files"
+    set -l lhostname (get_hostname)
+
+    for src in $DOTFILES_ROOT/*/*.symlink
+        set dir (string split -- / $src)[-2]
+        set base (basename $src .symlink)
+        set host_specific_file $DOTFILES_ROOT/$dir/$base.$lhostname.symlink
+
+        if test -f $host_specific_file
+            link_file $host_specific_file $HOME/.config/$dir/$base backup
+        else
+            link_file $src $HOME/.config/$dir/$base backup
+        end
+    end
+end
+
+function set_host_specific_aliases -d "Sets host-specific aliases"
+    set -l lhostname (get_hostname)
+    set -l alias_file "$DOTFILES/aliases.$lhostname.fish"
+
+    if test -f $alias_file
+        source $alias_file
+        success "aliases for $hostname"
+    else
+        info "no aliases for $hostname"
+    end
+end
+
 is_wsl
 and link_winhome
 and set -Ux IS_WSL 0
@@ -149,6 +182,9 @@ or abort 'dotfiles'
 fisher update
 and success 'plugins'
 or abort 'plugins'
+
+link_host_specific_files
+set_host_specific_aliases
 
 mkdir -p ~/.config/fish/completions/
 and success 'completions'
