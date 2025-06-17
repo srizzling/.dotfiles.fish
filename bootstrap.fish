@@ -53,16 +53,31 @@ function setup_gitconfig
         # otherwise this gitconfig was already made by the dotfiles
         info "already managed by dotfiles"
     end
-    # include the gitconfig.local file
     # finally make git knows this is a managed config already, preventing later
     # overrides by this script
-    git config --global include.path ~/.gitconfig.local
-    and git config --global core.hooksPath $DOTFILES/git/hooks
+
+    # include the gitconfig.local file
+    touch ~/.gitconfig.local
+    and git config --global include.path ~/.gitconfig.local
+    and success "created and linked ~/.gitconfig.local"
+
+    # personal .gitconfig file which wi
+    git config --global 'includeIf.~/development/personal/**.path' ~/.gitconfig.personal
     and git config --global alias.fixup "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
     and git config --global dotfiles.managed true
     and git config --global rebase.autosquash true
+    and git config --global push.autoSetupRemote true
+    and git config --global push.default simple
+    and git config --global pull.rebase true
+    and git config --global core.editor "code --wait"
+    and git config --global core.pager delta
+    and git config --global interactive.diffFilter "delta --color-only"
+    and git config --global delta.navigate true
+    and git config --global merge.conflictstyle diff3
+    and git config --global diff.colorMoved default
+    and git config --global init.defaultBranch main
+    and success "set up git config"
     or abort 'failed to setup git'
-
 end
 
 function link_file -d "links a file keeping a backup"
@@ -159,6 +174,14 @@ function set_host_specific_aliases -d "Sets host-specific aliases"
         info "no aliases for $hostname"
     end
 end
+
+
+# create default directories
+mkdir -p ~/development
+and mkdir -p ~/development/personal
+and mkdir -p ~/development/work
+and success 'created ~/development directories'
+or abort 'failed to create ~/development directories'
 
 is_wsl
 and link_winhome
