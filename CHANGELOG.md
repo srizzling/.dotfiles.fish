@@ -1,3 +1,13 @@
+## [1.2.0](https://github.com/srizzling/.dotfiles.fish/compare/v1.1.1...v1.2.0) (2025-06-17)
+
+### Features
+
+* **git:** ✨ move some global configuration to git ([bcbb4c8](https://github.com/srizzling/.dotfiles.fish/commit/bcbb4c8ec528dd5f4c7240dd3294800778c48d02))
+
+### Bug Fixes
+
+* **ghostty:** 🐛 macos setup delete default file ([0aa8fe7](https://github.com/srizzling/.dotfiles.fish/commit/0aa8fe798a422a250648a1ad23e9f38391cc9f5b))
+
 ## [1.1.1](https://github.com/srizzling/.dotfiles.fish/compare/v1.1.0...v1.1.1) (2025-06-10)
 
 ### Bug Fixes
