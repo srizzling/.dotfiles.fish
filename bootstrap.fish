@@ -62,7 +62,7 @@ function setup_gitconfig
     and success "created and linked ~/.gitconfig.local"
 
     # personal .gitconfig file which wi
-    git config --global includeIf.gitdir:~/development/personal/.path ~/.gitconfig.personal
+    git config --global 'includeIf.~/development/personal/**.path' ~/.gitconfig.personal
     and git config --global alias.fixup "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
     and git config --global dotfiles.managed true
     and git config --global rebase.autosquash true
@@ -71,13 +71,6 @@ function setup_gitconfig
     and git config --global pull.rebase true
     and git config --global core.editor "code --wait"
     and git config --global core.pager delta
-    and git config --global alias.cob "!git checkout $(git branch | fzf)"
-    and git config --global alias.cleanup "!f() { \
-        git checkout $(basename $(git symbolic-ref --short refs/remotes/origin/HEAD)); \
-        git pull; \
-        git fetch -p; \
-        git branch -vv | grep 'origin/.*: gone]' | grep -v '^+' | awk '{print $1}' | xargs git branch -D; \
-    }; f"
     and git config --global interactive.diffFilter "delta --color-only"
     and git config --global delta.navigate true
     and git config --global merge.conflictstyle diff3
