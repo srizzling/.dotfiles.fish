@@ -11,22 +11,45 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    brew-nix = {
+      url = "github:BatteredBunny/brew-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager, ... }:
+  outputs = { self, nixpkgs, nix-darwin, home-manager, brew-nix, ... }:
   let
     mkDarwinSystem = system: hostName: profile: username: nix-darwin.lib.darwinSystem {
       inherit system;
       specialArgs = { inherit profile; };
       modules = [
         ./darwin
+        # Add brew-nix module
+        brew-nix.darwinModules.default
+        ({pkgs, ...}: {
+          # Enable brew-nix
+          brew-nix.enable = true;
+          
+          # Add system-level brew packages
+          environment.systemPackages = with pkgs; [
+            # brewCasks.whatsapp  # Temporary disabled due to download failure
+            brewCasks.orbstack
+            # brewCasks.microsoft-teams  # Temporary disabled due to packaging failure
+          ];
+        })
+        # Re-enable home-manager with explicit Darwin configuration  
         home-manager.darwinModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = { inherit profile; };
-            users.${username} = import ./home-manager;
+            users.${username} = { pkgs, lib, ... }: {
+              imports = [ ./home-manager ];
+              # Explicitly set homeDirectory for Darwin, forcing override
+              home.homeDirectory = lib.mkForce "/Users/${username}";
+              home.username = lib.mkForce username;
+            };
           };
         }
       ];
