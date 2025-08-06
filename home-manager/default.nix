@@ -6,6 +6,7 @@
     ./shell.nix
     ./git.nix
     ./aerospace.nix
+    ./raycast.nix
     ../profiles/${profile}.nix
   ];
 

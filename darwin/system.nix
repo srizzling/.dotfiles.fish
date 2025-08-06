@@ -47,6 +47,23 @@
       ShowSeconds = true;
       ShowDate = 1;                     # Show date
     };
+
+    # Custom system preferences for settings not available as direct options
+    CustomUserPreferences = {
+      # Disable Spotlight keyboard shortcut (Cmd+Space) to allow Raycast to take over
+      "com.apple.symbolichotkeys" = {
+        AppleSymbolicHotKeys = {
+          # Spotlight search shortcut (Cmd+Space)
+          "64" = {
+            enabled = false;
+          };
+          # Spotlight search shortcut (alternative key)  
+          "65" = {
+            enabled = false;
+          };
+        };
+      };
+    };
   };
 
   # System-wide environment variables
