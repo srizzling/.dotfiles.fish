@@ -5,8 +5,8 @@
   
   # Git configuration for personal projects
   programs.git = {
-    userName = "Personal Name";  # TODO: Replace with actual name
-    userEmail = "personal@example.com";  # TODO: Replace with actual email
+    userName = "Sriram Venkatesh";
+    userEmail = "venksriram@gmail.com";
   };
 
   # Personal-specific environment variables
