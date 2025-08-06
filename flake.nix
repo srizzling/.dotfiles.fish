@@ -20,13 +20,22 @@
       specialArgs = { inherit profile; };
       modules = [
         ./darwin
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = { inherit profile; };
-          home-manager.users.${username} = import ./home-manager;
-        }
+        # TODO: Re-enable home-manager after basic darwin setup works
+        # home-manager.darwinModules.home-manager
+        # {
+        #   home-manager = {
+        #     useGlobalPkgs = true;
+        #     useUserPackages = true;
+        #     extraSpecialArgs = { inherit profile; };
+        #     users.${username} = { config, pkgs, profile, ... }: {
+        #       home.username = "srizzling";
+        #       home.homeDirectory = "/Users/srizzling";
+        #       home.stateVersion = "25.05";
+        #       programs.home-manager.enable = true;
+        #       home.packages = with pkgs; [ bat ];
+        #     };
+        #   };
+        # }
       ];
     };
   in
