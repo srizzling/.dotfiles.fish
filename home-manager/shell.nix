@@ -40,36 +40,9 @@
       };
     };
 
-    # Fish plugins via Home Manager (cleaner than fisher)
+    # Fish plugins via Home Manager - simplified for now
     plugins = [
-      # Essential plugins
-      {
-        name = "autopair";
-        src = pkgs.fetchFromGitHub {
-          owner = "jorgebucaran";
-          repo = "autopair.fish";
-          rev = "4d1752ff5b39819ab58d7337c69220342e9de0e2";
-          sha256 = "qt3t1iKRRNuiLWiVoiAYOu+9E7jsyECyIqLJ/dIqI0s=";
-        };
-      }
-      {
-        name = "fzf-fish";
-        src = pkgs.fetchFromGitHub {
-          owner = "PatrickF1";
-          repo = "fzf.fish";
-          rev = "8920367cf85eee5218cc25a11e209d46e2591e7a";
-          sha256 = "T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
-        };
-      }
-      {
-        name = "bass";
-        src = pkgs.fetchFromGitHub {
-          owner = "edc";
-          repo = "bass";
-          rev = "50eba266b0d8a952c7230fca1114cbc9fbbdfbd4";
-          sha256 = "+BN0wrA2ZivrtzNl0sD/LFE6OvhOVnEf6mjCRcMr8TQ=";
-        };
-      }
+      # Will add plugins back after testing basic functionality
     ];
 
     # Catppuccin theme will be set manually via fish_config
