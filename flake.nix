@@ -15,7 +15,7 @@
 
   outputs = { self, nixpkgs, nix-darwin, home-manager, ... }:
   let
-    mkDarwinSystem = system: hostName: profile: nix-darwin.lib.darwinSystem {
+    mkDarwinSystem = system: hostName: profile: username: nix-darwin.lib.darwinSystem {
       inherit system;
       specialArgs = { inherit profile; };
       modules = [
@@ -25,7 +25,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = { inherit profile; };
-          home-manager.users.${builtins.getEnv "USER"} = import ./home-manager;
+          home-manager.users.${username} = import ./home-manager;
         }
       ];
     };
@@ -34,13 +34,13 @@
     # Multi-architecture and multi-profile support
     darwinConfigurations = {
       # Intel Mac - Personal
-      "personal-intel" = mkDarwinSystem "x86_64-darwin" "personal-intel" "personal";
+      "personal-intel" = mkDarwinSystem "x86_64-darwin" "personal-intel" "personal" "srizzling";
       # Intel Mac - Work  
-      "work-intel" = mkDarwinSystem "x86_64-darwin" "work-intel" "work";
+      "work-intel" = mkDarwinSystem "x86_64-darwin" "work-intel" "work" "srizzling";
       # Apple Silicon - Personal
-      "personal-arm" = mkDarwinSystem "aarch64-darwin" "personal-arm" "personal";
+      "personal-arm" = mkDarwinSystem "aarch64-darwin" "personal-arm" "personal" "srizzling";
       # Apple Silicon - Work
-      "work-arm" = mkDarwinSystem "aarch64-darwin" "work-arm" "work";
+      "work-arm" = mkDarwinSystem "aarch64-darwin" "work-arm" "work" "srizzling";
     };
 
     # Development shells for easy access

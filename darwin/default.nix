@@ -27,5 +27,5 @@
   system.stateVersion = 4;
 
   # The platform the configuration will be used on
-  nixpkgs.hostPlatform = builtins.currentSystem;
+  # This will be set by the flake based on the system parameter
 }

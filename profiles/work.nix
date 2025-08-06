@@ -5,8 +5,8 @@
   
   # Git configuration for work projects  
   programs.git = {
-    userName = "Work Name";  # TODO: Replace with actual work name
-    userEmail = "work@company.com";  # TODO: Replace with actual work email
+    userName = "Sriram Venkatesh";
+    userEmail = "sriram.venkatesh@versent.com.au";  # Placeholder - update with actual work email
   };
 
   # Work-specific environment variables
