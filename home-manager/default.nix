@@ -5,13 +5,13 @@
     ./packages.nix
     ./shell.nix
     ./git.nix
+    ./aerospace.nix
     ../profiles/${profile}.nix
   ];
 
   # Home Manager needs a bit of information about you and the
-  # paths it should manage
-  home.username = "srizzling";
-  home.homeDirectory = "/Users/srizzling";
+  # paths it should manage  
+  # Note: username and homeDirectory are set in flake.nix
 
   # This value determines the Home Manager release that your
   # configuration is compatible with

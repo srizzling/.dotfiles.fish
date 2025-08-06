@@ -125,7 +125,7 @@ update:
 	@echo "Updating flake inputs..."
 	@nix flake update
 	@echo "Applying updated configuration..."
-	@sudo -E /run/current-system/sw/bin/darwin-rebuild switch --flake .
+	@sudo -E /run/current-system/sw/bin/darwin-rebuild switch --flake .#personal-intel
 
 # Rollback to previous generation
 .PHONY: rollback
@@ -137,7 +137,7 @@ rollback:
 .PHONY: rebuild
 rebuild:
 	@echo "Building configuration..."
-	@sudo -E /run/current-system/sw/bin/darwin-rebuild build --flake .
+	@sudo -E /run/current-system/sw/bin/darwin-rebuild build --flake .#personal-intel
 
 # Clean old generations (keep last 5)
 .PHONY: clean
