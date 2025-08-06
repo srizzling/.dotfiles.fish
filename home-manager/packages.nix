@@ -1,6 +1,7 @@
 { config, pkgs, profile, ... }:
 
 {
+  # Note: allowUnfree is configured at system level when using useGlobalPkgs
   # User packages - migrated from devbox global
   home.packages = with pkgs; [
     # Core utilities (from devbox global)
@@ -29,6 +30,16 @@
     # Development tools
     gh  # GitHub CLI
     just  # Command runner
+    
+    # GUI Applications (official packages from nixpkgs)
+    raycast
+    aerospace
+    # ghostty  # Temporarily disabled due to build issues
+    discord
+    vscode
+    slack
+    spotify
+    # whatsapp-for-linux  # Removed - Linux only package causing build issues
   ];
 
   # Enable direnv integration
