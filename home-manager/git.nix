@@ -25,7 +25,6 @@
         navigate = true;
         light = false;
         line-numbers = true;
-        syntax-theme = "Catppuccin-macchiato";
       };
       
       merge.conflictstyle = "diff3";

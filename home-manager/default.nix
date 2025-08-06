@@ -10,8 +10,8 @@
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage
-  home.username = builtins.getEnv "USER";
-  home.homeDirectory = builtins.getEnv "HOME";
+  home.username = "srizzling";
+  home.homeDirectory = "/Users/srizzling";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with

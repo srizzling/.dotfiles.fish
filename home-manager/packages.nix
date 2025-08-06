@@ -53,7 +53,7 @@
   programs.bat = {
     enable = true;
     config = {
-      theme = "Catppuccin-macchiato";
+      theme = "base16";  # Use a standard theme for now
       style = "numbers,changes,header";
     };
   };
