@@ -43,6 +43,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
+            backupFileExtension = "backup";  # Backup existing files
             extraSpecialArgs = { inherit profile; };
             users.${username} = { pkgs, lib, ... }: {
               imports = [ ./home-manager ];
