@@ -9,8 +9,7 @@
   # Enable experimental features
   nix.settings.experimental-features = "nix-command flakes";
   
-  # Auto upgrade nix package and the daemon service
-  services.nix-daemon.enable = true;
+  # Nix daemon is now managed unconditionally when nix.enable is on
 
   # Necessary for using flakes on this system
   nix.package = pkgs.nix;
@@ -21,6 +20,12 @@
 
   # Set Git commit hash for darwin-version
   system.configurationRevision = config.rev or config.dirtyRev or null;
+
+  # Set the primary user for system defaults
+  system.primaryUser = "srizzling";
+  
+  # Fix for nix build user group ID mismatch
+  ids.gids.nixbld = 350;
 
   # Used for backwards compatibility, please read the changelog before changing
   # $ darwin-rebuild changelog

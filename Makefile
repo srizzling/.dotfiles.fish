@@ -117,7 +117,7 @@ _bootstrap: check-nix
 .PHONY: switch
 switch:
 	@echo "Applying current configuration..."
-	@darwin-rebuild switch --flake .
+	@sudo -E /run/current-system/sw/bin/darwin-rebuild switch --flake .#personal-intel
 
 # Update flake inputs and apply
 .PHONY: update
@@ -125,19 +125,19 @@ update:
 	@echo "Updating flake inputs..."
 	@nix flake update
 	@echo "Applying updated configuration..."
-	@darwin-rebuild switch --flake .
+	@sudo -E /run/current-system/sw/bin/darwin-rebuild switch --flake .
 
 # Rollback to previous generation
 .PHONY: rollback
 rollback:
 	@echo "Rolling back to previous generation..."
-	@darwin-rebuild rollback
+	@sudo -E /run/current-system/sw/bin/darwin-rebuild rollback
 
 # Rebuild without switching
 .PHONY: rebuild
 rebuild:
 	@echo "Building configuration..."
-	@darwin-rebuild build --flake .
+	@sudo -E /run/current-system/sw/bin/darwin-rebuild build --flake .
 
 # Clean old generations (keep last 5)
 .PHONY: clean
