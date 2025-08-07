@@ -92,7 +92,16 @@
           sha256 = "sha256-s6Z0aYLXnWszh0bHYgDa2sFDjJHUhVGYHBPYPQOjx8I=";
         };
       }
-      # TODO: Add fish-git-emojis plugin once we get the correct hash
+      # fish-git-emojis - Git commit emojis
+      {
+        name = "fish-git-emojis";
+        src = pkgs.fetchFromGitHub {
+          owner = "srizzling";
+          repo = "fish-git-emojis";
+          rev = "d2625158356bd03a94f9c32b022225412c37fe60";
+          sha256 = "sha256-KuV5oGRbC4Enry2Al1EP4X38bH9qIUSWPND7gRwkpUo=";
+        };
+      }
       # bass - Make Bash utilities available in Fish
       {
         name = "bass";
