@@ -9,9 +9,9 @@
 @test "docker alias works" (alias docker | string match -q "*podman*")
 @test "docker-compose alias works" (alias docker-compose | string match -q "*podman-compose*")
 
-# Test Fish functions
-@test "fish_greeting function exists" (functions -q fish_greeting)
-@test "gst function exists" (functions -q gst)
+# Test Fish functions - cleaned up per user request  
+@test "fish_greeting function removed" (not functions -q fish_greeting)
+@test "gst function removed" (not functions -q gst)
 
 # Test Fish PATH configuration  
 @test "fish_add_path is available" (which fish_add_path)
