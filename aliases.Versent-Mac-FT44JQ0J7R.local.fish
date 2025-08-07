@@ -1,1 +1,0 @@
-alias innovation_adminlogin="stax2aws login -i stax-au1 -o versent-innovation -r arn:aws:iam::039612850894:role/staxid-admin-role -p innovation-admin && export AWS_PROFILE=innovation-admin && export AWS_REGION=ap-southeast-2"
