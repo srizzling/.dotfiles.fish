@@ -46,6 +46,10 @@ help:
 	@echo "  make test-packages            - Run package availability tests"
 	@echo "  make test-fish-config         - Run Fish configuration tests"
 	@echo ""
+	@echo "Release commands:"
+	@echo "  make release                  - Create new release based on conventional commits"
+	@echo "  make changelog                - Generate changelog"
+	@echo ""
 	@echo "Installation commands:"
 	@echo "  make install-nix              - Install Nix with flakes support"
 	@echo "  make install-darwin           - Install nix-darwin"
@@ -186,3 +190,17 @@ test-packages: ## Run package availability tests
 test-fish-config: ## Run Fish configuration tests
 	@echo "🐚 Testing Fish shell configuration..."
 	@cd test && fish -i -c "fishtape fish-config.test.fish; exit"
+
+# Release commands
+.PHONY: release changelog
+release: ## Create new release based on conventional commits
+	@echo "🚀 Creating new release based on conventional commits..."
+	@command -v cog >/dev/null 2>&1 || { echo "❌ Cocogitto (cog) not found. Run 'make switch' to install it."; exit 1; }
+	@echo "📝 Analyzing conventional commits since last tag..."
+	@cog bump --auto
+	@echo "✅ Release created! The tag and GitHub release will be created automatically."
+
+changelog: ## Generate changelog
+	@echo "📄 Generating changelog..."
+	@command -v cog >/dev/null 2>&1 || { echo "❌ Cocogitto (cog) not found. Run 'make switch' to install it."; exit 1; }
+	@cog changelog
