@@ -32,6 +32,9 @@
         fish_config theme save "Catppuccin Macchiato" >/dev/null 2>&1 || true
         echo "Catppuccin Macchiato" > ~/.config/fish/themes/current_theme
       end
+      
+      # Configure fzf.fish to use delta for diff highlighting
+      set -gx fzf_diff_highlighter delta --paging=never --width=20
     '';
     
     # Shell aliases

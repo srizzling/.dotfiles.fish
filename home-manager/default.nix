@@ -5,6 +5,7 @@
     ./packages.nix
     ./shell.nix
     ./git.nix
+    ./bat.nix
     ./aerospace.nix
     ./raycast.nix
     ../profiles/${profile}.nix
@@ -26,6 +27,7 @@
     EDITOR = "vim";
     VISUAL = "code";
     WEDITOR = "code";
+    BAT_THEME = "Catppuccin Macchiato";
   };
 
   # XDG directories

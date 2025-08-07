@@ -83,14 +83,6 @@
     enableFishIntegration = true;
   };
 
-  # Configure bat
-  programs.bat = {
-    enable = true;
-    config = {
-      theme = "base16";  # Use a standard theme for now
-      style = "numbers,changes,header";
-    };
-  };
 
   # Configure GitHub CLI
   programs.gh = {
@@ -112,12 +104,27 @@
 
   # Configure Ghostty terminal
   home.file.".config/ghostty/config".text = ''
-    theme = catppuccin-mocha
+    # Font configuration
+    font-family = Iosevka NFM
+    font-family-bold = Iosevka NFM
+    font-family-italic = Iosevka NFM
+    font-family-bold-italic = Iosevka NFM
     font-size = 23
-    font-family = "Iosevka NFM"
     
-    window-padding-x = 2,2
-    window-padding-y = 1,1
+    # Use Catppuccin Macchiato theme
+    theme = catppuccin-macchiato
+    
+    # Window padding for better visual appearance
+    window-padding-x = 10
+    window-padding-y = 10
+    
+    # Enable smooth cursor animation
+    cursor-style = block
+    cursor-style-blink = true
+    
+    # macOS specific settings
+    macos-option-as-alt = true
+    macos-non-native-fullscreen = true
   '';
 
   # Configure Aerospace window manager
