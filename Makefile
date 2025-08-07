@@ -17,6 +17,10 @@ PERSONAL_ARM_CONFIG = personal-arm
 WORK_INTEL_CONFIG = work-intel
 WORK_ARM_CONFIG = work-arm
 
+test-flake: ## Check Nix flake evaluation
+	@echo "🔍 Checking Nix flake..."
+	nix flake check --no-build
+
 # Default target
 .PHONY: help
 help:
