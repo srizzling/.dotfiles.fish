@@ -31,6 +31,7 @@
     gh  # GitHub CLI
     just  # Command runner
     devbox  # Isolated development environments
+    claude-code  # Agentic coding tool by Anthropic
     
     # Fish shell tools
     fishPlugins.fishtape  # TAP-compliant test runner for Fish
@@ -46,6 +47,7 @@
     vscode
     slack
     spotify
+    firefox
     # whatsapp-for-linux  # Removed - Linux only package causing build issues
   ];
 
