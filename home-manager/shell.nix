@@ -57,22 +57,8 @@
       docker-compose = "podman-compose";
     };
 
-    # Fish functions
-    functions = {
-      # Custom greeting
-      fish_greeting = {
-        body = ''
-          echo "🐟 Welcome to Fish shell!"
-          echo "Profile: ${profile}"
-          echo "System: $(uname -s) $(uname -m)"
-        '';
-      };
-      
-      # Quick git status
-      gst = {
-        body = "git status --short";
-      };
-    };
+    # Fish functions (removed greeting and gst as requested)
+    functions = {};
 
     # Fish plugins via Home Manager (migrated from fisher plugins)
     plugins = [
@@ -106,6 +92,7 @@
           sha256 = "sha256-s6Z0aYLXnWszh0bHYgDa2sFDjJHUhVGYHBPYPQOjx8I=";
         };
       }
+      # TODO: Add fish-git-emojis plugin once we get the correct hash
       # bass - Make Bash utilities available in Fish
       {
         name = "bass";

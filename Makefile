@@ -41,6 +41,11 @@ help:
 	@echo "  make clean                    - Clean old generations (keep last 5)"
 	@echo "  make rebuild                  - Rebuild without switching"
 	@echo ""
+	@echo "Testing commands:"
+	@echo "  make test                     - Run all Fishtape tests"
+	@echo "  make test-packages            - Run package availability tests"
+	@echo "  make test-fish-config         - Run Fish configuration tests"
+	@echo ""
 	@echo "Installation commands:"
 	@echo "  make install-nix              - Install Nix with flakes support"
 	@echo "  make install-darwin           - Install nix-darwin"
@@ -167,3 +172,17 @@ info:
 check:
 	@echo "Checking flake configuration..."
 	@nix flake check
+
+# Testing commands (integrated from test/Makefile)
+.PHONY: test test-packages test-fish-config
+test: ## Run all Fishtape tests (recommended)
+	@echo "🐟 Running Fishtape tests..."
+	@cd test && fish -i -c "fishtape packages.test.fish fish-config.test.fish; exit"
+
+test-packages: ## Run package availability tests  
+	@echo "🏠 Testing Nix packages with Fishtape..."
+	@cd test && fish -i -c "fishtape packages.test.fish; exit"
+
+test-fish-config: ## Run Fish configuration tests
+	@echo "🐚 Testing Fish shell configuration..."
+	@cd test && fish -i -c "fishtape fish-config.test.fish; exit"
