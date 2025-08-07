@@ -1,8 +1,3 @@
 tag_prefix = "v"
 ignore_merge_commits = true
-
-[changelog]
-path = "CHANGELOG.md"
-authors = [
-    { username = "srizzling", signature = "Sriram Venkatesh" }
-]
+disable_changelog = true
