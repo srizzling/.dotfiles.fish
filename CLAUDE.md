@@ -113,9 +113,16 @@ make test-quick    # Run tests without slow container checks
 
 1. Make your changes to the appropriate Nix files
 2. Run tests to ensure everything works: `make test`
-3. Build the configuration: `darwin-rebuild switch --flake .`
+3. Build the configuration: `make switch`
 4. Write tests for any new packages or functionality
 5. Commit using git-emoji conventions
+
+### Creating Releases
+
+1. Ensure all changes are committed and pushed
+2. Run `make release` to create a new version tag based on conventional commits
+3. The GitHub workflow will automatically create a release with changelogs
+4. Use `make changelog` to preview what will be included in the next release
 
 ### Adding New Packages
 
