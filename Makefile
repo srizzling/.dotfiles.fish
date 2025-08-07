@@ -197,5 +197,7 @@ release: ## Create new release based on conventional commits
 	@command -v cog >/dev/null 2>&1 || { echo "❌ Cocogitto (cog) not found. Run 'make switch' to install it."; exit 1; }
 	@echo "📝 Analyzing conventional commits since last tag..."
 	@cog bump --auto
-	@echo "✅ Release created! The tag and GitHub release will be created automatically."
+	@echo "🏷️ Pushing tag to remote to trigger GitHub release..."
+	@git push origin $$(git describe --tags --abbrev=0)
+	@echo "✅ Release created and pushed! GitHub workflow will create the release automatically."
 
