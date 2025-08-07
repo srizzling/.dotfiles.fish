@@ -24,7 +24,7 @@
   # Basic shell setup
   home.sessionVariables = {
     EDITOR = "vim";
-    VISUAL = "$EDITOR";
+    VISUAL = "code";
     WEDITOR = "code";
   };
 
