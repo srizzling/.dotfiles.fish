@@ -30,17 +30,16 @@
           # Enable brew-nix  
           brew-nix.enable = true;
           
-          # Add system-level brew packages (architecture-specific)
+          # Add system-level packages (prefer nixpkgs, fallback to brew-nix)
           environment.systemPackages = with pkgs; [
-            # brewCasks.whatsapp  # Temporary disabled due to download failure
-            # brewCasks.microsoft-teams  # Temporary disabled due to packaging failure
-            brewCasks.ghostty  # Terminal emulator via brew-nix
+            # Terminal emulator - using brew-nix due to build issues in nixpkgs
+            brewCasks.ghostty
           ] ++ lib.optionals (system == "x86_64-darwin") [
             # Podman for Intel Macs (daemonless Docker alternative)
             podman
             podman-compose
           ] ++ lib.optionals (system == "aarch64-darwin") [
-            # OrbStack for Apple Silicon Macs  
+            # OrbStack for Apple Silicon Macs (only available via brew-nix)
             brewCasks.orbstack
           ];
         })
