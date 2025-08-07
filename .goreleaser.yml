@@ -1,0 +1,88 @@
+# GoReleaser configuration for .dotfiles.fish
+version: 2
+
+# Since this is a dotfiles repository without Go code,
+# we'll create a simple release that packages the configuration files
+builds:
+  - skip: true
+
+archives:
+  - format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end }}
+    files:
+      - "*.nix"
+      - "*.md"
+      - "flake.lock"
+      - "Makefile"
+      - "darwin/**/*"
+      - "home-manager/**/*"
+      - "profiles/**/*"
+      - "test/**/*"
+      - ".github/**/*"
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  version_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  use: github
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "merge conflict"
+      - Merge pull request
+      - Merge remote-tracking branch
+      - Merge branch
+  groups:
+    - title: "New Features"
+      regexp: "^.*feat[(\\w)]*:+.*$"
+      order: 0
+    - title: "Bug Fixes"  
+      regexp: "^.*fix[(\\w)]*:+.*$"
+      order: 1
+    - title: "Documentation"
+      regexp: "^.*docs[(\\w)]*:+.*$"
+      order: 2
+    - title: "Other Changes"
+      order: 999
+
+release:
+  discussion_category_name: General
+  prerelease: auto
+  mode: replace
+  header: |
+    ## Nix-based macOS dotfiles configuration
+    
+    This release contains the complete Nix Darwin + Home Manager configuration for modern macOS development environments.
+    
+    ### Quick Start
+    
+    ```bash
+    # Download and extract
+    curl -L https://github.com/srizzling/.dotfiles.fish/archive/{{ .Tag }}.tar.gz | tar xz
+    cd .dotfiles.fish-{{ .Tag }}
+    
+    # Bootstrap (auto-detects architecture)
+    make bootstrap-personal  # or make bootstrap-work
+    ```
+    
+    ### What's included
+    - 🐟 Fish shell with plugins and theming
+    - ❄️ Nix package management with 50+ tools
+    - 🎨 Catppuccin Macchiato theme
+    - ✅ Comprehensive test suite
+    - 🔧 Multi-architecture support (Intel/Apple Silicon)
+  footer: |
+    **Full documentation**: [README.md](https://github.com/srizzling/.dotfiles.fish/blob/{{ .Tag }}/README.md)
+    
+    **Development guidelines**: [CLAUDE.md](https://github.com/srizzling/.dotfiles.fish/blob/{{ .Tag }}/CLAUDE.md)
