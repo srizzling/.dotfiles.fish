@@ -46,3 +46,4 @@
 # New Packages Tests  
 @test "claude is available and working" (claude --version | string match -q "*Claude Code*")
 @test "firefox app is installed" (test -d "/Applications/Nix Apps/Firefox.app" -o -d "/Applications/Firefox.app")
+@test "cocogitto is available and working" (cog --version | string match -q "cog*")
