@@ -21,7 +21,31 @@
 
   # Create /etc/zshrc that loads the nix-darwin environment
   programs.zsh.enable = true;
-  programs.fish.enable = true;
+  
+  # Configure Fish at system level
+  programs.fish = {
+    enable = true;
+    
+    # Set PATH for all Fish shells system-wide
+    shellInit = ''
+      # Add Nix system-wide packages to PATH
+      fish_add_path --prepend /run/current-system/sw/bin
+      fish_add_path --prepend /nix/var/nix/profiles/default/bin  
+      fish_add_path --prepend /etc/profiles/per-user/srizzling/bin
+    '';
+    
+    loginShellInit = ''
+      # Add Nix system-wide packages to PATH for login shells
+      fish_add_path --prepend /run/current-system/sw/bin
+      fish_add_path --prepend /nix/var/nix/profiles/default/bin
+      fish_add_path --prepend /etc/profiles/per-user/srizzling/bin
+    '';
+  };
+  
+  # Set system-wide environment variables for Nix paths
+  environment.variables = {
+    PATH = "/run/current-system/sw/bin:/etc/profiles/per-user/srizzling/bin:\${PATH}";
+  };
 
   # Set Git commit hash for darwin-version
   system.configurationRevision = config.rev or config.dirtyRev or null;
