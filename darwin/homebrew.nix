@@ -1,8 +1,8 @@
-{ config, pkgs, profile, ... }:
+{ config, pkgs, lib, profile, system, ... }:
 
 {
-  # Homebrew replaced with brew-nix for Nix-managed Homebrew casks
-  # All GUI applications are now managed through Nix:
-  # - nixpkgs: raycast, aerospace, ghostty, discord, vscode, slack
-  # - brew-nix: whatsapp, orbstack, microsoft-teams
+  # Homebrew is disabled - using brew-nix instead for better integration
+  homebrew = {
+    enable = false;
+  };
 }

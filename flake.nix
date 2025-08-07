@@ -21,20 +21,27 @@
   let
     mkDarwinSystem = system: hostName: profile: username: nix-darwin.lib.darwinSystem {
       inherit system;
-      specialArgs = { inherit profile; };
+      specialArgs = { inherit profile system; };
       modules = [
         ./darwin
         # Add brew-nix module
         brew-nix.darwinModules.default
-        ({pkgs, ...}: {
-          # Enable brew-nix
+        ({pkgs, lib, system, ...}: {
+          # Enable brew-nix  
           brew-nix.enable = true;
           
-          # Add system-level brew packages
+          # Add system-level brew packages (architecture-specific)
           environment.systemPackages = with pkgs; [
             # brewCasks.whatsapp  # Temporary disabled due to download failure
-            brewCasks.orbstack
             # brewCasks.microsoft-teams  # Temporary disabled due to packaging failure
+            brewCasks.ghostty  # Terminal emulator via brew-nix
+          ] ++ lib.optionals (system == "x86_64-darwin") [
+            # Podman for Intel Macs (daemonless Docker alternative)
+            podman
+            podman-compose
+          ] ++ lib.optionals (system == "aarch64-darwin") [
+            # OrbStack for Apple Silicon Macs  
+            brewCasks.orbstack
           ];
         })
         # Re-enable home-manager with explicit Darwin configuration  
