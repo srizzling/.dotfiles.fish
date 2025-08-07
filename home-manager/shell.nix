@@ -74,7 +74,7 @@
       };
     };
 
-    # Fish plugins via Home Manager
+    # Fish plugins via Home Manager (migrated from fisher plugins)
     plugins = [
       # Catppuccin theme for Fish
       {
@@ -84,6 +84,56 @@
           repo = "fish";
           rev = "0ce27b518e8ead555dec34dd8be3df5bd75cff8e";
           sha256 = "sha256-Dc/zdxfzAUM5NX8PxzfljRbYvO9f9syuLO8yBr+R3qg=";
+        };
+      }
+      # autopair.fish - Auto-pair parentheses, brackets, etc.
+      {
+        name = "autopair.fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "jorgebucaran";
+          repo = "autopair.fish";
+          rev = "4d1752ff5b39819ab58d7337c69220342e9de0e2";
+          sha256 = "sha256-qt3t1iKRRNuiLWiVoiAYOu+9E7jsyECyIqZJ/oRIT1A=";
+        };
+      }
+      # oh-my-fish/plugin-grc - Colorize command output
+      {
+        name = "plugin-grc";
+        src = pkgs.fetchFromGitHub {
+          owner = "oh-my-fish";
+          repo = "plugin-grc";
+          rev = "dc9dfd9cdbf37793ce7f832f3ed3be6e9eb52f7c";
+          sha256 = "sha256-s6Z0aYLXnWszh0bHYgDa2sFDjJHUhVGYHBPYPQOjx8I=";
+        };
+      }
+      # bass - Make Bash utilities available in Fish
+      {
+        name = "bass";
+        src = pkgs.fetchFromGitHub {
+          owner = "edc";
+          repo = "bass";
+          rev = "79b62958ecf4e87334f24d6743e5766475bcf4d0";
+          sha256 = "sha256-3d/qL+hovNA4VMWZ0n1L+dSM1lcz7P5CQJyy3gu8iwc=";
+        };
+      }
+      # fzf.fish - Better fzf integration
+      {
+        name = "fzf.fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "patrickf1";
+          repo = "fzf.fish";
+          rev = "8920367cf85eee5218cc25a11e209d46e2591e7a";
+          sha256 = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
+        };
+      }
+      # fish-direnv - Direnv integration (alternative to halostatue/fish-direnv)
+      {
+        name = "fish-direnv";
+        src = pkgs.fetchFromGitHub {
+          owner = "halostatue";
+          repo = "fish-direnv";
+          rev = "d9082c1cd5f4ce3c86f1aa9fc20c2bdf0b4b2e1d";
+          sha256 = "sha256-1+A6uiuG13ThU3OhKDtRMNgvJHn4gv7PJaHg4Ff1C9A=";
         };
       }
     ];
