@@ -4,35 +4,52 @@ This file contains conventions and guidelines for contributing to this Nix-based
 
 ## Git Commit Conventions
 
-This repository uses git-emoji conventions for commit messages with the format:
-
-```
-g<type> <scope>: <message>
-```
-
-### Available Types
-
-- **feat**: New features or functionality
-- **fix**: Bug fixes  
-- **docs**: Documentation changes
-- **style**: Code style changes (formatting, missing semicolons, etc.)
-- **refactor**: Code refactoring without functionality changes
-- **test**: Adding or modifying tests
-- **chore**: Build process, tooling, or maintenance tasks
-- **perf**: Performance improvements
-- **ci**: Continuous integration changes
-- **build**: Build system or external dependency changes
-- **revert**: Reverting previous commits
-
-### Example Commit Messages
+This repository uses git-emoji conventions via Fish functions. The format is:
 
 ```bash
-gfeat nix: add Claude Code and Firefox packages
-gfix fish: resolve plugin hash mismatches  
-gdocs readme: update installation instructions
-gtest packages: add tests for new GUI applications
-gchore migration: remove temporary migration files
-grefactor shell: consolidate Fish plugin configuration
+g<type> "<scope>" "<message>"
+```
+
+The functions automatically format commits as: `<type>(<scope>): <emoji> <message>`
+
+### Available Functions
+
+| Function | Type | Emoji | Description |
+|----------|------|-------|-------------|
+| `gfeat` | feat | ✨ | New features or functionality |
+| `gfix` | fix | 🐛 | Bug fixes |
+| `gdocs` | docs | 📝 | Documentation changes |
+| `gstyle` | style | 🎨 | Code style changes (formatting, etc.) |
+| `gref` | refactor | ♻️ | Code refactoring without functionality changes |
+| `gtest` | test | ✅ | Adding or modifying tests |
+| `gchore` | chore | 🧹 | Build process, tooling, or maintenance tasks |
+| `gperf` | perf | ⚡ | Performance improvements |
+| `gci` | ci | 👷 | Continuous integration changes |
+| `gdepup` | chore | ⬆ | Dependency upgrades |
+| `gdepdown` | chore | ⬇️ | Dependency downgrades |
+| `gwip` | wip | 🚧 | Work in progress (auto-generates message) |
+
+### Example Commit Commands
+
+```bash
+gfeat "nix" "add Claude Code and Firefox packages"
+gfix "fish" "resolve plugin hash mismatches"  
+gdocs "readme" "update installation instructions"
+gtest "packages" "add tests for new GUI applications"
+gchore "migration" "remove temporary migration files"
+gref "shell" "consolidate Fish plugin configuration"
+gdepup "nix" "update nixpkgs to latest unstable"
+```
+
+### Actual Commit Format Generated
+
+```
+feat(nix): ✨ add Claude Code and Firefox packages
+fix(fish): 🐛 resolve plugin hash mismatches
+docs(readme): 📝 update installation instructions
+test(packages): ✅ add tests for new GUI applications
+chore(migration): 🧹 remove temporary migration files
+refactor(shell): ♻️ consolidate Fish plugin configuration
 ```
 
 ## Package Management Guidelines
