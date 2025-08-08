@@ -6,6 +6,7 @@
     ./shell.nix
     ./git.nix
     ./bat.nix
+    ./delta.nix
     ./aerospace.nix
     ./raycast.nix
     ./ghostty.nix
