@@ -66,9 +66,55 @@
         spotify_player generate shell-completion fish > ~/.config/fish/completions/spotify_player.fish 2>/dev/null || true
       end
       
+      # Generate Claude CLI completions if not present
       if command -v claude >/dev/null 2>&1 && test ! -f ~/.config/fish/completions/claude.fish
-        mkdir -p ~/.config/fish/completions  
-        claude completion fish > ~/.config/fish/completions/claude.fish 2>/dev/null || true
+        mkdir -p ~/.config/fish/completions
+        printf '%s\n' \
+          '# Fish completions for Claude CLI' \
+          ' ' \
+          '# Main command completions' \
+          'complete -c claude -f' \
+          ' ' \
+          '# Commands' \
+          'complete -c claude -n "not __fish_seen_subcommand_from config mcp migrate-installer setup-token doctor update install" -a "config" -d "Manage configuration"' \
+          'complete -c claude -n "not __fish_seen_subcommand_from config mcp migrate-installer setup-token doctor update install" -a "mcp" -d "Configure and manage MCP servers"' \
+          'complete -c claude -n "not __fish_seen_subcommand_from config mcp migrate-installer setup-token doctor update install" -a "migrate-installer" -d "Migrate from global npm installation to local installation"' \
+          'complete -c claude -n "not __fish_seen_subcommand_from config mcp migrate-installer setup-token doctor update install" -a "setup-token" -d "Set up a long-lived authentication token"' \
+          'complete -c claude -n "not __fish_seen_subcommand_from config mcp migrate-installer setup-token doctor update install" -a "doctor" -d "Check the health of your Claude Code auto-updater"' \
+          'complete -c claude -n "not __fish_seen_subcommand_from config mcp migrate-installer setup-token doctor update install" -a "update" -d "Check for updates and install if available"' \
+          'complete -c claude -n "not __fish_seen_subcommand_from config mcp migrate-installer setup-token doctor update install" -a "install" -d "Install Claude Code native build"' \
+          ' ' \
+          '# Global options' \
+          'complete -c claude -s d -l debug -d "Enable debug mode"' \
+          'complete -c claude -l verbose -d "Override verbose mode setting from config"' \
+          'complete -c claude -s p -l print -d "Print response and exit (useful for pipes)"' \
+          'complete -c claude -l output-format -d "Output format (only works with --print)" -x -a "text json stream-json"' \
+          'complete -c claude -l input-format -d "Input format (only works with --print)" -x -a "text stream-json"' \
+          'complete -c claude -l mcp-debug -d "[DEPRECATED] Enable MCP debug mode"' \
+          'complete -c claude -l dangerously-skip-permissions -d "Bypass all permission checks"' \
+          'complete -c claude -l allowedTools -d "Comma or space-separated list of tool names to allow" -x' \
+          'complete -c claude -l disallowedTools -d "Comma or space-separated list of tool names to deny" -x' \
+          'complete -c claude -l mcp-config -d "Load MCP servers from a JSON file or string" -r' \
+          'complete -c claude -l append-system-prompt -d "Append a system prompt to the default system prompt" -x' \
+          'complete -c claude -l permission-mode -d "Permission mode to use for the session" -x -a "acceptEdits bypassPermissions default plan"' \
+          'complete -c claude -s c -l continue -d "Continue the most recent conversation"' \
+          'complete -c claude -s r -l resume -d "Resume a conversation" -x' \
+          'complete -c claude -l model -d "Model for the current session" -x -a "sonnet opus"' \
+          'complete -c claude -l fallback-model -d "Enable automatic fallback to specified model" -x -a "sonnet opus"' \
+          'complete -c claude -l settings -d "Path to a settings JSON file" -r' \
+          'complete -c claude -l add-dir -d "Additional directories to allow tool access to" -r' \
+          'complete -c claude -l ide -d "Automatically connect to IDE on startup"' \
+          'complete -c claude -l strict-mcp-config -d "Only use MCP servers from --mcp-config"' \
+          'complete -c claude -l session-id -d "Use a specific session ID for the conversation" -x' \
+          'complete -c claude -s v -l version -d "Output the version number"' \
+          'complete -c claude -s h -l help -d "Display help for command"' \
+          ' ' \
+          '# Config subcommand completions' \
+          'complete -c claude -n "__fish_seen_subcommand_from config" -a "set get list" -d "Config operations"' \
+          ' ' \
+          '# Install subcommand completions' \
+          'complete -c claude -n "__fish_seen_subcommand_from install" -a "stable latest" -d "Installation targets"' \
+          > ~/.config/fish/completions/claude.fish
       end
     '';
     
