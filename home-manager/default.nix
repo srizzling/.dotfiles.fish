@@ -8,6 +8,8 @@
     ./bat.nix
     ./aerospace.nix
     ./raycast.nix
+    ./ghostty.nix
+    ./lsd.nix
     ../profiles/${profile}.nix
   ];
 
