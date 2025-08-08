@@ -166,4 +166,12 @@
     if.app-id = 'com.mitchell.ghostty'
     run = 'move-node-to-workspace T'
   '';
+
+  # Automatically reload AeroSpace configuration when it changes
+  home.activation.reloadAerospace = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    if command -v aerospace >/dev/null 2>&1; then
+      echo "Reloading AeroSpace configuration..."
+      $DRY_RUN_CMD aerospace reload-config
+    fi
+  '';
 }
