@@ -25,17 +25,13 @@
         navigate = true;
         light = false;
         line-numbers = true;
-        features = "catppuccin-macchiato";
       };
       
       merge.conflictstyle = "diff3";
       diff.colorMoved = "default";
 
       # Include files for different contexts
-      include.path = [
-        "~/.gitconfig.local"
-        "~/.config/delta/themes/catppuccin.gitconfig"
-      ];
+      include.path = "~/.gitconfig.local";
       
       # Directory-based configuration
       "includeIf \"gitdir:~/development/personal/\"".path = "~/.gitconfig.personal";

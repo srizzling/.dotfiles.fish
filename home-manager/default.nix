@@ -5,12 +5,11 @@
     ./packages.nix
     ./shell.nix
     ./git.nix
-    ./bat.nix
-    ./delta.nix
     ./aerospace.nix
     ./raycast.nix
     ./ghostty.nix
     ./lsd.nix
+    ./catppuccin.nix
     ../profiles/${profile}.nix
   ];
 
@@ -30,9 +29,11 @@
     EDITOR = "vim";
     VISUAL = "code";
     WEDITOR = "code";
-    BAT_THEME = "Catppuccin Macchiato";
   };
 
   # XDG directories
   xdg.enable = true;
+
+  # Set Firefox as default browser (macOS compatible)
+  home.sessionVariables.BROWSER = "firefox";
 }

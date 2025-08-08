@@ -15,9 +15,10 @@
       url = "github:BatteredBunny/brew-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin.url = "github:catppuccin/nix";
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager, brew-nix, ... }:
+  outputs = { self, nixpkgs, nix-darwin, home-manager, brew-nix, catppuccin, ... }:
   let
     mkDarwinSystem = system: hostName: profile: username: nix-darwin.lib.darwinSystem {
       inherit system;
@@ -52,7 +53,10 @@
             backupFileExtension = "backup";  # Backup existing files
             extraSpecialArgs = { inherit profile; };
             users.${username} = { pkgs, lib, ... }: {
-              imports = [ ./home-manager ];
+              imports = [ 
+                ./home-manager 
+                catppuccin.homeModules.catppuccin
+              ];
               # Explicitly set homeDirectory for Darwin, forcing override
               home.homeDirectory = lib.mkForce "/Users/${username}";
               home.username = lib.mkForce username;

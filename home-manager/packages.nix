@@ -48,6 +48,7 @@
     vscode
     slack
     spotify
+    spotify-player  # Terminal-based spotify client
     firefox
     # whatsapp-for-linux  # Removed - Linux only package causing build issues
   ];
