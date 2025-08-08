@@ -90,13 +90,13 @@
     alt-shift-s = 'move-node-to-workspace S'
     alt-shift-t = 'move-node-to-workspace T'
 
-    # Navigate between workspaces with arrow keys
-    alt-left = 'workspace prev'
-    alt-right = 'workspace next'
+    # Navigate between workspaces with arrow keys (with wrap-around)
+    alt-left = 'workspace --wrap-around prev'
+    alt-right = 'workspace --wrap-around next'
     
-    # Move current window between workspaces with shift + arrow keys
-    alt-shift-left = 'move-node-to-workspace prev'
-    alt-shift-right = 'move-node-to-workspace next'
+    # Move current window between workspaces with shift + arrow keys (with wrap-around)
+    alt-shift-left = 'move-node-to-workspace --wrap-around prev'
+    alt-shift-right = 'move-node-to-workspace --wrap-around next'
 
     # See: https://github.com/nikitabobko/AeroSpace/blob/main/docs/commands.md#workspace-back-and-forth
     alt-tab = 'workspace-back-and-forth'
