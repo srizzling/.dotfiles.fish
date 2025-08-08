@@ -45,6 +45,31 @@
       set fzf_git_log_opts --preview='git show --color=always {}'
       set fzf_git_status_opts --preview='git diff --color=always {}'
       set fzf_processes_opts --preview='ps -p {} -o pid,ppid,user,start,time,command'
+      
+      # Generate completions for tools that support it
+      if command -v gh >/dev/null 2>&1
+        gh completion --shell fish | source
+      end
+      
+      if command -v just >/dev/null 2>&1
+        just --completions fish | source
+      end
+      
+      # Generate one-time completions for tools that support it
+      if command -v cocogitto >/dev/null 2>&1 && test ! -f ~/.config/fish/completions/cog.fish
+        mkdir -p ~/.config/fish/completions
+        cog generate-completions fish > ~/.config/fish/completions/cog.fish 2>/dev/null || true
+      end
+      
+      if command -v spotify_player >/dev/null 2>&1 && test ! -f ~/.config/fish/completions/spotify_player.fish
+        mkdir -p ~/.config/fish/completions
+        spotify_player generate shell-completion fish > ~/.config/fish/completions/spotify_player.fish 2>/dev/null || true
+      end
+      
+      if command -v claude >/dev/null 2>&1 && test ! -f ~/.config/fish/completions/claude.fish
+        mkdir -p ~/.config/fish/completions  
+        claude completion fish > ~/.config/fish/completions/claude.fish 2>/dev/null || true
+      end
     '';
     
     # Shell aliases
@@ -170,7 +195,13 @@
     # as it's easier to manage interactively
   };
 
-  # Starship prompt - full configuration from dotfiles repo
+  # Enable additional program integrations with completions
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
+  # Starship prompt - full configuration from dotfiles repo  
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
