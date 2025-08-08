@@ -120,7 +120,7 @@
       
       # fzf-enhanced environment variable browser
       fenv = ''
-        env | fzf --height=50% --reverse --preview='echo "Variable: {1}"' | cut -d= -f1 | xargs -I {} fish -c 'echo {}=(string escape ${})'
+        env | fzf --height=50% --reverse --preview='echo "Variable: {1}"'
       '';
       
       # fzf-enhanced command history search with execution
