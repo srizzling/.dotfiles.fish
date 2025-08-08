@@ -35,6 +35,16 @@
       
       # Configure fzf.fish to use delta for diff highlighting
       set -gx fzf_diff_highlighter delta --paging=never --width=20
+      
+      # Configure fzf key bindings and options
+      set -gx FZF_DEFAULT_OPTS '--height 50% --layout=reverse --border --margin=1 --padding=1'
+      
+      # fzf.fish configuration variables
+      set fzf_history_opts --preview-window=wrap --preview='echo {}'
+      set fzf_directory_opts --preview='lsd -la --color=always {}'  
+      set fzf_git_log_opts --preview='git show --color=always {}'
+      set fzf_git_status_opts --preview='git diff --color=always {}'
+      set fzf_processes_opts --preview='ps -p {} -o pid,ppid,user,start,time,command'
     '';
     
     # Shell aliases
@@ -60,8 +70,67 @@
       docker-compose = "podman-compose";
     };
 
-    # Fish functions (removed greeting and gst as requested)
-    functions = {};
+    # Fish functions with fzf integrations
+    functions = {
+      # fzf-enhanced git checkout
+      gco = ''
+        if git rev-parse --git-dir >/dev/null 2>&1
+          set -l branch (git branch --all | grep -v HEAD | sed 's/^[* ] //' | sed 's/remotes\///' | sort -u | fzf --height=20 --reverse --preview='git log --oneline --color=always {}' --preview-window=right:60%)
+          if test -n "$branch"
+            git checkout (echo $branch | sed 's/origin\///')
+          end
+        else
+          echo "Not in a git repository"
+        end
+      '';
+      
+      # fzf-enhanced process killer  
+      fkill = ''
+        set -l pid (ps -ef | sed 1d | fzf --multi --height=50% --reverse --preview='ps -p {2} -o pid,ppid,user,start,time,command' | awk '{print $2}')
+        if test -n "$pid"
+          echo $pid | xargs kill -9
+          echo "Killed process(es): $pid"
+        end
+      '';
+      
+      # fzf-enhanced directory navigation
+      fcd = ''
+        set -l dir (find . -type d 2>/dev/null | fzf --height=40% --reverse --preview='lsd -la --color=always {}')
+        if test -n "$dir"
+          cd "$dir"
+        end
+      '';
+      
+      # fzf-enhanced file search and edit
+      fe = ''
+        set -l file (find . -type f 2>/dev/null | fzf --height=50% --reverse --preview='bat --color=always --line-range=:50 {}')
+        if test -n "$file"
+          $EDITOR "$file"
+        end
+      '';
+      
+      # fzf-enhanced git log browser
+      gll = ''
+        if git rev-parse --git-dir >/dev/null 2>&1
+          git log --oneline --color=always | fzf --ansi --height=80% --reverse --preview='git show --color=always {1}' --preview-window=right:60%
+        else
+          echo "Not in a git repository"
+        end
+      '';
+      
+      # fzf-enhanced environment variable browser
+      fenv = ''
+        env | fzf --height=50% --reverse --preview='echo "Variable: {1}"' | cut -d= -f1 | xargs -I {} fish -c 'echo {}=(string escape ${})'
+      '';
+      
+      # fzf-enhanced command history search with execution
+      fh = ''
+        set -l cmd (history | fzf --height=50% --reverse --preview='echo {}' --query=(commandline -b))
+        if test -n "$cmd"
+          commandline -rb "$cmd"
+        end
+      '';
+    };
 
     # Fish plugins via Home Manager (minimal essential plugins only)
     plugins = [
