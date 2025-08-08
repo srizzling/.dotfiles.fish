@@ -90,13 +90,21 @@
     alt-shift-s = 'move-node-to-workspace S'
     alt-shift-t = 'move-node-to-workspace T'
 
-    # Navigate between workspaces with arrow keys (with wrap-around)
-    alt-left = 'workspace --wrap-around prev'
-    alt-right = 'workspace --wrap-around next'
+    # Navigate between monitors with arrow keys
+    alt-left = 'focus-monitor left'
+    alt-right = 'focus-monitor right'
     
-    # Move current window between workspaces with shift + arrow keys (with wrap-around)
-    alt-shift-left = 'move-node-to-workspace --wrap-around prev'
-    alt-shift-right = 'move-node-to-workspace --wrap-around next'
+    # Move current window between monitors with shift + arrow keys  
+    alt-shift-left = 'move-node-to-monitor left'
+    alt-shift-right = 'move-node-to-monitor right'
+    
+    # Navigate between workspaces with up/down arrows
+    alt-up = 'workspace --wrap-around prev'
+    alt-down = 'workspace --wrap-around next'
+    
+    # Move windows between workspaces with shift + up/down arrows
+    alt-shift-up = 'move-node-to-workspace --wrap-around prev'
+    alt-shift-down = 'move-node-to-workspace --wrap-around next'
 
     # See: https://github.com/nikitabobko/AeroSpace/blob/main/docs/commands.md#workspace-back-and-forth
     alt-tab = 'workspace-back-and-forth'
