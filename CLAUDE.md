@@ -29,15 +29,40 @@ The functions automatically format commits as: `<type>(<scope>): <emoji> <messag
 | `gdepdown` | chore | ⬇️ | Dependency downgrades |
 | `gwip` | wip | 🚧 | Work in progress (auto-generates message) |
 
+### Allowed Scopes
+
+Use specific module names for targeted changes, broader categories for cross-cutting changes:
+
+**Platform-specific:**
+- `nix` - Nix language files, flake configuration
+- `darwin` - macOS system-level configuration
+- `homemanager` - Home Manager specific changes
+
+**Module-specific:**
+- `aerospace` - Window manager configuration
+- `catppuccin` - Theme configuration
+- `delta` - Git diff tool configuration
+- `fzf` - Fuzzy finder integrations
+- `ghostty` - Terminal emulator settings
+- `git` - Git configuration
+- `lsd` - Directory listing tool config
+- `raycast` - Raycast launcher settings
+- `shell` - Fish shell configuration
+
+**Infrastructure:**
+- `ci` - GitHub Actions, workflows
+- `release` - Release configuration, changelogs
+- `test` - Test files and configuration
+
 ### Example Commit Commands
 
 ```bash
 gfeat "nix" "add Claude Code and Firefox packages"
-gfix "fish" "resolve plugin hash mismatches"  
+gfix "shell" "resolve Fish completion generation issues"  
 gdocs "readme" "update installation instructions"
-gtest "packages" "add tests for new GUI applications"
-gchore "migration" "remove temporary migration files"
-gref "shell" "consolidate Fish plugin configuration"
+gtest "ci" "add tests for GitHub Actions workflow"
+gchore "ci" "remove temporary migration files"
+gref "fzf" "consolidate fuzzy finder integrations"
 gdepup "nix" "update nixpkgs to latest unstable"
 ```
 

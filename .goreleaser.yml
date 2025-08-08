@@ -35,25 +35,77 @@ snapshot:
 changelog:
   sort: asc
   use: github
+  divider: "---"
   filters:
     exclude:
-      - "^docs:"
-      - "^test:"
       - "merge conflict"
       - Merge pull request
       - Merge remote-tracking branch
       - Merge branch
+      - "^.*\\(wip\\).*$"
   groups:
-    - title: "New Features"
-      regexp: "^.*feat[(\\w)]*:+.*$"
-      order: 0
-    - title: "Bug Fixes"  
-      regexp: "^.*fix[(\\w)]*:+.*$"
-      order: 1
-    - title: "Documentation"
-      regexp: "^.*docs[(\\w)]*:+.*$"
-      order: 2
-    - title: "Other Changes"
+    # Platform-specific changes
+    - title: "nix"
+      regexp: "^.*\\(nix\\):+.*$"
+      order: 100
+    - title: "darwin"
+      regexp: "^.*\\(darwin\\):+.*$"
+      order: 101
+    - title: "homemanager"
+      regexp: "^.*\\(homemanager\\):+.*$"
+      order: 102
+    
+    # Module-specific changes
+    - title: "aerospace"
+      regexp: "^.*\\(aerospace\\):+.*$"
+      order: 200
+    - title: "catppuccin"
+      regexp: "^.*\\(catppuccin\\):+.*$"
+      order: 201
+    - title: "delta"
+      regexp: "^.*\\(delta\\):+.*$"
+      order: 202
+    - title: "fzf"
+      regexp: "^.*\\(fzf\\):+.*$"
+      order: 203
+    - title: "ghostty"
+      regexp: "^.*\\(ghostty\\):+.*$"
+      order: 204
+    - title: "git"
+      regexp: "^.*\\(git\\):+.*$"
+      order: 205
+    - title: "lsd"
+      regexp: "^.*\\(lsd\\):+.*$"
+      order: 206
+    - title: "raycast"
+      regexp: "^.*\\(raycast\\):+.*$"
+      order: 207
+    - title: "shell"
+      regexp: "^.*\\(shell\\):+.*$"
+      order: 208
+    
+    # Infrastructure
+    - title: "ci"
+      regexp: "^.*\\(ci\\):+.*$"
+      order: 400
+    - title: "release"
+      regexp: "^.*\\(release\\):+.*$"
+      order: 401
+    - title: "test"
+      regexp: "^.*\\(test\\):+.*$"
+      order: 402
+    
+    # Change types (catch-all for changes without specific scopes)
+    - title: "improvements"
+      regexp: "^feat.*$"
+      order: 500
+    - title: "fixes"
+      regexp: "^fix.*$"
+      order: 501
+    - title: "documentation"
+      regexp: "^docs.*$"
+      order: 502
+    - title: "other"
       order: 999
 
 release:
